@@ -1,0 +1,25 @@
+.nav-top-menu a {
+  display: block;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: $main-white;
+  border-bottom: 2px solid transparent;
+  @include transition;
+
+  &:hover {
+    border-bottom: 2px solid $color-accent;
+  }
+}
+
+.top-menu-list {
+  @extend %list;
+  display: flex;
+  align-items: center;
+  color: $main-white;
+}
+
+.top-menu-item:first-child {
+  margin-right: 36px;
+}

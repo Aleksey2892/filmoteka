@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Filmoteka</title>
+  </head>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <body>
+    <!-- spinner START -->
+    <div class="cssload-dots not-visible">
+      <div class="cssload-dot"></div>
+      <div class="cssload-dot"></div>
+      <div class="cssload-dot"></div>
+      <div class="cssload-dot"></div>
+      <div class="cssload-dot"></div>
+    </div>
+
+    <svg
+      class="spinner not-visible"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur
+            in="SourceGraphic"
+            result="blur"
+            stdDeviation="12"
+          ></feGaussianBlur>
+          <feColorMatrix
+            in="blur"
+            mode="matrix"
+            values="1 0 0 0 0	0 1 0 0 0	0 0 1 0 0	0 0 0 18 -7"
+            result="goo"
+          ></feColorMatrix>
+        </filter>
+      </defs>
+    </svg>
+    <!-- spinner END -->
+
+    <section class="section-top">
+      <div class="container">
+        <header class="header">
+          <h1>
+            <a class="title-link" href="#">
+              <img class="logo" src="./images/icons/film.svg" alt="logo" />
+              <span class="title-page not-visible">Filmoteka</span>
+            </a>
+          </h1>
+
+          <nav class="nav-top-menu">
+            <ul class="top-menu-list">
+              <li class="top-menu-item"><a href="#">Home</a></li>
+              <li class="top-menu-item"><a href="#">My library</a></li>
+            </ul>
+          </nav>
+        </header>
+
+        <label class="search-label">
+          <input
+            class="top-search"
+            type="text"
+            name="search"
+            placeholder="Search films..."
+          />
+        </label>
+        <p class="error-search">
+          Search result not successful. Enter the correct movie name and try
+          again.
+        </p>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: $main-font;
+}
+
+.not-visible {
+  display: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+  padding: 0 20px;
+  @include push--auto;
+
+  @include tablets {
+    width: 660px;
+  }
+
+  @include desktop {
+    width: 916px;
+  }
+}

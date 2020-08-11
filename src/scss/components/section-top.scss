@@ -1,0 +1,42 @@
+.section-top {
+  padding-top: 46px;
+  padding-bottom: 20px;
+  min-height: 230px;
+  background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56) 0%,
+      rgba(0, 0, 0, 0.56) 100%
+    ),
+    url(./images/bg/bg-header.jpg);
+  background-position: center;
+  background-position: right 84% bottom 0%;
+  background-repeat: no-repeat;
+}
+
+.header {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & a {
+    @extend %link;
+    @extend %link:hover;
+  }
+
+  & .logo {
+    opacity: 0.5;
+  }
+
+  @include tablets {
+    & .title-page {
+      margin-left: 10px;
+      display: block;
+      color: $main-white;
+    }
+
+    .title-link {
+      display: flex;
+    }
+  }
+}
