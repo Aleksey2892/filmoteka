@@ -9,6 +9,7 @@
   border-radius: 5px;
   transition: all 0.2s linear;
   @include push-tablets;
+  cursor: pointer;
 
   &:not(:last-child) {
     margin-bottom: 20px;
