@@ -17,6 +17,25 @@
   }
 }
 
+.section-top-lib {
+  padding-top: 46px;
+  padding-bottom: 20px;
+  min-height: 230px;
+  background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56) 0%,
+      rgba(0, 0, 0, 0.56) 100%
+    ),
+    url(images/bg/bg-header-queue.jpg);
+  background-position: right 84% bottom 0%;
+  background-repeat: no-repeat;
+
+  @include desktop {
+    background-position: center;
+    background-size: cover;
+  }
+}
+
 .header {
   margin-bottom: 40px;
   display: flex;

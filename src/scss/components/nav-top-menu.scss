@@ -23,6 +23,9 @@
   color: #fff;
 }
 
-.top-menu-item:first-child {
+.top-menu-item:not(:last-child) {
   margin-right: 36px;
+}
+.top-menu-item:first-child {
+  margin-left: 10px;
 }
