@@ -7,10 +7,14 @@
       rgba(0, 0, 0, 0.56) 0%,
       rgba(0, 0, 0, 0.56) 100%
     ),
-    url(./images/bg/bg-header.jpg);
-  background-position: center;
+    url(images/bg/bg-header.jpg);
   background-position: right 84% bottom 0%;
   background-repeat: no-repeat;
+
+  @include desktop {
+    background-position: center;
+    background-size: cover;
+  }
 }
 
 .header {
@@ -39,4 +43,8 @@
       display: flex;
     }
   }
+}
+
+.header .logo {
+  opacity: 0.5;
 }
