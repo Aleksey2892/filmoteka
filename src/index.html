@@ -96,24 +96,44 @@
             <div class="container">
               <h2 class="visually-hidden">Films list</h2>
               <ul class="films-list">
-                <li class="film-card">
+                <li class="onefilm-card">
                   <img
                     class="film-cover"
                     src="images/test-cover.jpg"
                     alt="film-cover"
                   />
-                  <div class="film-info-wrapper">
-                    <h3 class="film-name">Film name</h3>
-                    <p class="film-info">
-                      <span class="film-genre">Film genre</span>
-                      |
-                      <span class="film-year">Film year</span>
-                      <span class="film-rating">10.0</span>
+                  <div class="onefilm-info-wrapper">
+                    <h3 class="onefilm-name">Film name</h3>
+                    <div class="onefilm__rating">
+                      <div class="rating__titles">
+                        <p class="rating__title">Vota / Votes</p>
+                        <p class="rating__title">Popularity</p>
+                        <p class="rating__title">Original Title</p>
+                        <p class="rating__title">Genre</p>
+                      </div>
+                      <div class="rating__values">
+                        <p class="rating__value">
+                          <span class="film-rating">${Vota}</span> / ${Votes}
+                        </p>
+                        <p class="rating__value">${Pop}</p>
+                        <p class="rating__value">${Orig Title}</p>
+                        <p class="rating__value">${Genre}</p>
+                      </div>
+                    </div>
+                    <h4>About</h4>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Dolor repudiandae alias blanditiis? Facilis asperiores
+                      molestiae voluptas repudiandae, unde temporibus alias
+                      voluptate, consequatur dignissimos accusamus est deleniti,
+                      aspernatur incidunt eum? Quis.
                     </p>
+                    <button>Add to watched</button>
+                    <button>Add to queue</button>
                   </div>
                 </li>
 
-                <li class="film-card">
+                <!-- <li class="film-card">
                   <img
                     class="film-cover"
                     src="images/test-cover.jpg"
@@ -128,41 +148,7 @@
                       <span class="film-rating">10.0</span>
                     </p>
                   </div>
-                </li>
-
-                <li class="film-card">
-                  <img
-                    class="film-cover"
-                    src="images/test-cover.jpg"
-                    alt="film-cover"
-                  />
-                  <div class="film-info-wrapper">
-                    <h3 class="film-name">Film name</h3>
-                    <p class="film-info">
-                      <span class="film-genre">Film genre</span>
-                      |
-                      <span class="film-year">Film year</span>
-                      <span class="film-rating">10.0</span>
-                    </p>
-                  </div>
-                </li>
-
-                <li class="film-card">
-                  <img
-                    class="film-cover"
-                    src="images/test-cover.jpg"
-                    alt="film-cover"
-                  />
-                  <div class="film-info-wrapper">
-                    <h3 class="film-name">Film name</h3>
-                    <p class="film-info">
-                      <span class="film-genre">Film genre</span>
-                      |
-                      <span class="film-year">Film year</span>
-                      <span class="film-rating">10.0</span>
-                    </p>
-                  </div>
-                </li>
+                </li> -->
               </ul>
             </div>
           </section>
