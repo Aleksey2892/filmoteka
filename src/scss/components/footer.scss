@@ -15,12 +15,16 @@
 .copyright-text {
   position: relative;
   padding-left: 18px;
+  @include push-tablets;
+  margin-bottom: 9px;
   display: block;
+  width: 245px;
   color: $main-black;
   opacity: 0.8;
 
   @include tablets {
     display: inline-block;
+    margin-bottom: 0;
   }
 
   &::before {
