@@ -4,12 +4,15 @@
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: $main-white;
+  color: #fff;
   border-bottom: 2px solid transparent;
-  @include transition;
+  transition: all 0.2s linear;
+  @extend %list;
+  // @extend %link;
+  // @extend %link:hover;
 
   &:hover {
-    border-bottom: 2px solid $color-accent;
+    border-bottom: 2px solid #ff6b08;
   }
 }
 
@@ -17,7 +20,7 @@
   @extend %list;
   display: flex;
   align-items: center;
-  color: $main-white;
+  color: #fff;
 }
 
 .top-menu-item:first-child {
