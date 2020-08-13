@@ -14,7 +14,6 @@ refs.form.addEventListener('submit', event => {
 
   clearPage();
   searchFetch(inputValue).then(data => {
-    // console.log(data, 'мы на 20й строчке');
     renderCard(data);
   });
 });
@@ -47,26 +46,22 @@ function searchFetch(inputValue) {
     });
 }
 
-// result on page
 function renderCard(arr) {
+  console.log(arr);
+
   const arr2 = arr.map(elem => {
     elem.release_date = elem.release_date.substr(0, 4);
 
     //for genre
-    getGenreNames(elem.genre_ids);
-    console.log(elem.genre_ids);
 
-    const genres = getGenreNames(elem.genre_ids);
-
-    console.log(genres);
-    // elem.genre_ids[0] = genres[0];
-
-    /////
+    elem.genre_ids = getGenreNames(elem.genre_ids).then(res => {
+      console.log(res);
+      return res.join(', ');
+    });
 
     return elem;
   });
-  //   console.log('data arr2: ' + arr2);
-  //   console.log(arr2);
+  console.log(arr2);
   refs.listFilms.insertAdjacentHTML('beforeend', tempCard(arr2));
 }
 
@@ -79,7 +74,7 @@ startFetch().then(data => {
   renderCard(data);
 });
 
-// genre;
+//genre
 function genreFetch() {
   return axios(
     `https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}&language=en-US`,
@@ -92,20 +87,22 @@ function genreFetch() {
     });
 }
 
-// for genres
+// // for genres
 function getGenreNames(arrIds) {
   return genreFetch().then(data => {
     console.log(data);
-
-    const arrGenre = [];
-    arrIds.map(el => {
-      const genre = getGenreById(data, el);
-      arrGenre.push(genre.name);
+    const findId = arrIds.map(id => {
+      return data.find(el => {
+        if (el.id === id) {
+          return el.name;
+        }
+      });
     });
-
-    console.log(arrGenre);
-    return arrGenre;
+    const getName = findId.map(elem => {
+      return elem.name;
+    });
+    return getName;
   });
 }
-const getGenreById = (arr, id) => arr.find(x => x.id === id);
-// // export default startFetch;
+
+//  export default startFetch;

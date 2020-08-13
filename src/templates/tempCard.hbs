@@ -1,5 +1,5 @@
 {{#each this}}
- <li class="film-card">
+ <li class="film-card" data-id="{{id}}">
   <img
     class="film-cover"
     src="https://image.tmdb.org/t/p/w500{{poster_path}}"
@@ -8,7 +8,7 @@
   <div class="film-info-wrapper">
     <h3 class="film-name">{{original_title}}</h3>
     <p class="film-info">
-      <span class="film-genre">{{genre_ids}}</span>
+      <span class="film-genre" >{{genre_ids}}</span>
       |
       <span class="film-year">{{release_date}}</span>
       <span class="film-rating">{{vote_average}}</span>
