@@ -7,6 +7,7 @@ const openMyLibrary = () => {
 	refs.myWatched.classList.remove('visually-hidden');
 	refs.myQueue.classList.remove('visually-hidden');
 	refs.myWatched.classList.add('active');
+	refs.myQueue.classList.remove('active');
 	refs.homeBg.classList.replace('section-top', 'section-top-lib')
 };
 

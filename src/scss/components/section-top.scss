@@ -72,7 +72,7 @@
   display: flex;
   margin: auto;
   width: 100%;
-  color: #fff;
+  color: $main-white;
   list-style: none;
   justify-content: space-around;
   @include phones {
@@ -80,24 +80,37 @@
   }
 }
 
+.btn-container-item {
+  justify-content: center;
+  display: flex;
+}
+
 .btn-container-item a {
   display: block;
   text-decoration: none;
   font-weight: 500;
   font-size: 12px;
+  width: 130px;
+  height: 45px;
+  text-align: center;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: #fff;
+  color: $main-white;
   border: 1px solid;
-  transition: all 0.2s linear;
-  padding: 10px 30px 10px 30px;
+  padding-top: 15px;
   border-radius: 5px;
+  @include transition;
 
   &:hover,
   &:focus {
-    background-color: #ff6b08;
+    background-color: $color-accent;
   }
 }
 .active a {
-  background-color: #ff6b08;
+  background-color: $color-accent;
+}
+
+.title-page:hover {
+  @include transition;
+  color: $color-accent;
 }
