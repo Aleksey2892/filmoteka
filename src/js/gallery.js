@@ -47,17 +47,25 @@ function searchFetch(inputValue) {
     });
 }
 
+// result on page
 function renderCard(arr) {
-  console.log(arr);
-
   const arr2 = arr.map(elem => {
     elem.release_date = elem.release_date.substr(0, 4);
 
     //for genre
-    // getGenreNames(elem.genre_ids);
+    getGenreNames(elem.genre_ids);
+    console.log(elem.genre_ids);
+
+    const genres = getGenreNames(elem.genre_ids);
+
+    console.log(genres);
+    // elem.genre_ids[0] = genres[0];
+
+    /////
 
     return elem;
   });
+  //   console.log('data arr2: ' + arr2);
   //   console.log(arr2);
   refs.listFilms.insertAdjacentHTML('beforeend', tempCard(arr2));
 }
@@ -71,31 +79,33 @@ startFetch().then(data => {
   renderCard(data);
 });
 
-//genre
-// function genreFetch() {
-//   return axios(
-//     `https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}&language=en-US`,
-//   )
-//     .then(data => {
-//       return data.data.genres;
-//     })
-//     .catch(error => {
-//       throw error;
-//     });
-// }
+// genre;
+function genreFetch() {
+  return axios(
+    `https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}&language=en-US`,
+  )
+    .then(data => {
+      return data.data.genres;
+    })
+    .catch(error => {
+      throw error;
+    });
+}
 
-// // for genres
-// function getGenreNames(arrIds) {
-//   const genreArr = genreFetch().then(data => {
-//     // console.log(data);
-//     arrIds.map(el => {
-//       const genre = getGenreById(data, el);
-//       console.log(el);
-//       console.log(genre.name);
-//       return genre.name;
-//       //   return (el = genre.name);
-//     });
-//   });
-// }
-// const getGenreById = (arr, id) => arr.find(x => x.id === id);
+// for genres
+function getGenreNames(arrIds) {
+  return genreFetch().then(data => {
+    console.log(data);
+
+    const arrGenre = [];
+    arrIds.map(el => {
+      const genre = getGenreById(data, el);
+      arrGenre.push(genre.name);
+    });
+
+    console.log(arrGenre);
+    return arrGenre;
+  });
+}
+const getGenreById = (arr, id) => arr.find(x => x.id === id);
 // // export default startFetch;
