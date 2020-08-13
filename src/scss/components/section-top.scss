@@ -67,3 +67,37 @@
 .header .logo {
   opacity: 0.5;
 }
+
+.btn-container {
+  display: flex;
+  margin: auto;
+  width: 100%;
+  color: #fff;
+  list-style: none;
+  justify-content: space-around;
+  @include phones {
+    width: 342px;
+  }
+}
+
+.btn-container-item a {
+  display: block;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #fff;
+  border: 1px solid;
+  transition: all 0.2s linear;
+  padding: 10px 30px 10px 30px;
+  border-radius: 5px;
+
+  &:hover,
+  &:focus {
+    background-color: #ff6b08;
+  }
+}
+.active a {
+  background-color: #ff6b08;
+}
