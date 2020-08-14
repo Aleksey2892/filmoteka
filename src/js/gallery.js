@@ -14,22 +14,29 @@ const pageNumber = {
 
 refs.form.addEventListener('submit', event => {
   event.preventDefault();
-
   inputValue = event.currentTarget.elements.search.value;
   //   event.target.firstElementChild.value;
-
   clearPage();
   searchFetch(inputValue).then(data => {
     renderCard(data);
   });
+
+  //   next page for search
+  refs.nextPage.addEventListener('click', event => {
+    console.log(event);
+    searchFetch(inputValue).then(data => {
+      renderCard(data);
+    });
+  });
 });
 
-refs.nextPage.addEventListener('click', event => {
-  // pageNumber.counter += 1;
+//next page for start
+refs.nextPage.addEventListener('click', onNextPageBtn);
+function onNextPageBtn() {
   startFetch().then(data => {
     renderCard(data);
   });
-});
+}
 
 //for start
 function startFetch() {
@@ -78,6 +85,7 @@ function renderCard(arr) {
 function clearPage() {
   refs.listFilms.innerHTML = '';
   pageNumber.counter = 0;
+  refs.nextPage.removeEventListener('click', onNextPageBtn);
 }
 
 //  first page (popular films)
