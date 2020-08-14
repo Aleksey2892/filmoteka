@@ -8,8 +8,13 @@ const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
 // v4//const api_key ='eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYzI0ZTI4ZDIxNmVmMTY0OTQwYjlmZDk4OTNmZjYyYSIsInN1YiI6IjVmMzJiZTJhMTk2NzU3MDAzN2IyOTdiMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eklE7KpArGZEjZ8EtPWfnHm4uf6Hy8QdLtxbIFbzwro';
 const baseURL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${api_key}`;
 
+const pageNumber = {
+  counter: 0,
+};
+
 refs.form.addEventListener('submit', event => {
   event.preventDefault();
+
   inputValue = event.currentTarget.elements.search.value;
   //   event.target.firstElementChild.value;
 
@@ -19,9 +24,17 @@ refs.form.addEventListener('submit', event => {
   });
 });
 
+refs.nextPage.addEventListener('click', event => {
+  // pageNumber.counter += 1;
+  startFetch().then(data => {
+    renderCard(data);
+  });
+});
+
 //for start
 function startFetch() {
-  return axios(baseURL)
+  pageNumber.counter += 1;
+  return axios(`${baseURL}&page=${pageNumber.counter}`)
     .then(data => {
       //   this.pageNumber += 1;
 
@@ -34,8 +47,9 @@ function startFetch() {
 
 //for search
 function searchFetch(inputValue) {
+  pageNumber.counter += 1;
   return axios(
-    `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${inputValue}`,
+    `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${inputValue}&page=${pageNumber.counter}`,
   )
     .then(data => {
       //   this.pageNumber += 1;
@@ -48,8 +62,6 @@ function searchFetch(inputValue) {
 }
 
 function renderCard(arr) {
-  console.log(arr);
-
   const arr2 = arr.map(elem => {
     elem.release_date = elem.release_date.substr(0, 4);
 
@@ -59,12 +71,13 @@ function renderCard(arr) {
 
     return elem;
   });
-  console.log(arr2);
+
   refs.listFilms.insertAdjacentHTML('beforeend', tempCard(arr2));
 }
 
 function clearPage() {
   refs.listFilms.innerHTML = '';
+  pageNumber.counter = 0;
 }
 
 //  first page (popular films)
@@ -79,7 +92,6 @@ function getGenreNames(arrIds) {
   const findId = arrIds.map(id => {
     return genre_names.find(el => {
       if (el.id === id) {
-        console.log(el.name);
         return el.name;
       }
     });
@@ -87,7 +99,7 @@ function getGenreNames(arrIds) {
   const getName = findId.map(elem => {
     return elem.name;
   });
-  console.log(getName);
+
   return getName;
 }
 
