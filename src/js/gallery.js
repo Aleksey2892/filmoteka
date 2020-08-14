@@ -1,8 +1,9 @@
 import refs from './refs';
 import tempCard from '../templates/tempCard.hbs';
 import getGenreNames from './getGenres';
-import { searchFetch, pageNumber } from './searchFetch';
+import { searchFetch } from './searchFetch';
 import startFetch from './startFetch';
+import clearPage from './clearPage';
 
 let inputValue;
 
@@ -38,26 +39,46 @@ refs.form.addEventListener('submit', event => {
   event.preventDefault();
   clearPage();
   console.log(event);
-  inputValue = event.currentTarget.elements.search.value;
+  if (event.currentTarget.elements.search.value === '') {
+    console.log('Please enter search word');
+    refs.errorNull.classList.add('error-visible');
+    refs.nextPage.classList.add('visually-hidden');
+  } else {
+    refs.errorNull.classList.remove('error-visible');
+    refs.nextPage.classList.remove('visually-hidden');
+    inputValue = event.currentTarget.elements.search.value;
 
-  searchFetch(inputValue).then(data => {
-    renderCard(data);
-  });
+    searchFetch(inputValue).then(data => {
+      if (data.length === 0) {
+        refs.errorWrong.classList.add('error-visible');
+        refs.nextPage.classList.add('visually-hidden');
+        console.log('wrong!!!');
+      } else {
+        refs.errorWrong.classList.remove('error-visible');
+        refs.nextPage.classList.remove('visually-hidden');
+      }
+      renderCard(data);
+      if (elem.poster_path === '') {
+        elem.poster_path = '';
+      }
+    });
+  }
 });
 
 function renderCard(arr) {
   const arr2 = arr.map(elem => {
     elem.release_date = elem.release_date.substr(0, 4);
     elem.genre_ids = getGenreNames(elem.genre_ids).join(', ');
+    console.log(elem.poster_path);
+    if (elem.poster_path === null) {
+      elem.poster_path = 'https://cutt.ly/bd8IOZ4';
+    } else {
+      elem.poster_path = `https://image.tmdb.org/t/p/w500/${elem.poster_path}`;
+    }
     return elem;
   });
 
   refs.listFilms.insertAdjacentHTML('beforeend', tempCard(arr2));
-}
-
-function clearPage() {
-  refs.listFilms.textContent = '';
-  pageNumber.counter = 0;
 }
 
 //  export default startFetch;

@@ -1,8 +1,9 @@
 {{#each this}}
  <li class="film-card" data-id="{{id}}">
+   
   <img
     class="film-cover"
-    src="https://image.tmdb.org/t/p/w500{{poster_path}}"
+    src="{{poster_path}}"
     alt="{{original_title}}"
   />
   <div class="film-info-wrapper">
