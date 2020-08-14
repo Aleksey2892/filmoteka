@@ -1,6 +1,7 @@
 import axios from 'axios';
 import refs from './refs';
 import tempCard from '../templates/tempCard.hbs';
+import genre_names from './genre_ids';
 
 let inputValue;
 const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
@@ -54,10 +55,7 @@ function renderCard(arr) {
 
     //for genre
 
-    elem.genre_ids = getGenreNames(elem.genre_ids).then(res => {
-      console.log(res);
-      return res.join(', ');
-    });
+    elem.genre_ids = getGenreNames(elem.genre_ids).join(', ');
 
     return elem;
   });
@@ -75,34 +73,22 @@ startFetch().then(data => {
 });
 
 //genre
-function genreFetch() {
-  return axios(
-    `https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}&language=en-US`,
-  )
-    .then(data => {
-      return data.data.genres;
-    })
-    .catch(error => {
-      throw error;
-    });
-}
 
 // // for genres
 function getGenreNames(arrIds) {
-  return genreFetch().then(data => {
-    console.log(data);
-    const findId = arrIds.map(id => {
-      return data.find(el => {
-        if (el.id === id) {
-          return el.name;
-        }
-      });
+  const findId = arrIds.map(id => {
+    return genre_names.find(el => {
+      if (el.id === id) {
+        console.log(el.name);
+        return el.name;
+      }
     });
-    const getName = findId.map(elem => {
-      return elem.name;
-    });
-    return getName;
   });
+  const getName = findId.map(elem => {
+    return elem.name;
+  });
+  console.log(getName);
+  return getName;
 }
 
 //  export default startFetch;
