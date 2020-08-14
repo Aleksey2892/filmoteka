@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { pageNumber } from './gallery';
 
 const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
-const pageNumber = {
-  counter: 0,
-};
+// const pageNumber = {
+//   counter: 0,
+// };
 
 export default function startFetch() {
   pageNumber.counter += 1;
