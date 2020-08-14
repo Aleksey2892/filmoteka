@@ -8,6 +8,7 @@ export default function getGenreNames(arrIds) {
       }
     });
   });
+
   const getName = findId.map(elem => {
     return elem.name;
   });
