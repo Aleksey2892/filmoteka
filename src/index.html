@@ -30,17 +30,17 @@
       >
         <defs>
           <filter id="goo">
-            <feGaussianBlur
+            <fegaussianblur
               in="SourceGraphic"
               result="blur"
-              stdDeviation="12"
-            ></feGaussianBlur>
-            <feColorMatrix
+              stddeviation="12"
+            ></fegaussianblur>
+            <fecolormatrix
               in="blur"
               mode="matrix"
               values="1 0 0 0 0	0 1 0 0 0	0 0 1 0 0	0 0 0 18 -7"
               result="goo"
-            ></feColorMatrix>
+            ></fecolormatrix>
           </filter>
         </defs>
       </svg>
@@ -69,7 +69,7 @@
               </nav>
             </header>
 
-            <div class="search-block">
+            <form class="search-block">
               <input
                 class="top-search"
                 type="text"
@@ -82,11 +82,13 @@
                   alt="search"
                 />
               </button>
-            </div>
-
-            <p class="error-search error-visible">
+            </form>
+            <p class="error-search search-wrong">
               Search result not successful. Enter the correct movie name and try
               again.
+            </p>
+            <p class="error-search search-null">
+              Please enter search word
             </p>
           </div>
         </section>
@@ -95,6 +97,13 @@
           <section>
             <div class="container">
               <h2 class="visually-hidden">Films list</h2>
+              <ul class="films-list"></ul>
+            </div>
+
+            <!-- test -->
+            <div style="text-align: center;">
+              <button id="nextBtn" class="startNextPage">next</button>
+
               <ul class="films-list">
                 <li class="onefilm-card">
                   <img
@@ -171,7 +180,9 @@
                     <li><a href="#">&#129122</a></li>
                 </ul>
               </div>
+
             </div>
+            <!-- test -->
           </section>
         </main>
       </div>
@@ -195,6 +206,6 @@
         </div>
       </footer>
     </div>
-    <script type="text/javascript" src="main.js"></script>
+    <!-- <script type="text/javascript" src="main.js"></script> -->
   </body>
 </html>
