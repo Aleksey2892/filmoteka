@@ -59,8 +59,6 @@ function searchFetch(inputValue) {
     `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${inputValue}&page=${pageNumber.counter}`,
   )
     .then(data => {
-      //   this.pageNumber += 1;
-
       return data.data.results;
     })
     .catch(error => {
@@ -71,8 +69,6 @@ function searchFetch(inputValue) {
 function renderCard(arr) {
   const arr2 = arr.map(elem => {
     elem.release_date = elem.release_date.substr(0, 4);
-
-    //for genre
 
     elem.genre_ids = getGenreNames(elem.genre_ids).join(', ');
 
