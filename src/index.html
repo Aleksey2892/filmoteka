@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Filmoteka</title>
-  </head>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-    rel="stylesheet"
-  />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
   <body>
     <div class="wrapper">
@@ -37,7 +37,6 @@
             ></fegaussianblur>
             <fecolormatrix
               in="blur"
-              mode="matrix"
               values="1 0 0 0 0	0 1 0 0 0	0 0 1 0 0	0 0 0 18 -7"
               result="goo"
             ></fecolormatrix>
@@ -97,13 +96,6 @@
           <section>
             <div class="container">
               <h2 class="visually-hidden">Films list</h2>
-              <ul class="films-list"></ul>
-            </div>
-
-            <!-- test -->
-            <div style="text-align: center;">
-              <button id="nextBtn" class="startNextPage">next</button>
-
               <ul class="films-list">
                 <li class="onefilm-card">
                   <img
@@ -122,7 +114,8 @@
                       </div>
                       <div class="rating__values">
                         <p class="rating__value">
-                          <span class="film-rating">{8.0}</span> / {1260}
+                          <span class="film-rating onefilm-rating">{8.0}</span>
+                          / {1260}
                         </p>
                         <p class="rating__value">{100.2}</p>
                         <p class="rating__value">{A FISTFUL OF LEAD}</p>
@@ -151,38 +144,19 @@
                     </div>
                   </div>
                 </li>
-
-                <!-- <li class="film-card">
-                  <img
-                    class="film-cover"
-                    src="images/test-cover.jpg"
-                    alt="film-cover"
-                  />
-                  <div class="film-info-wrapper">
-                    <h3 class="film-name">Film name</h3>
-                    <p class="film-info">
-                      <span class="film-genre">Film genre</span>
-                      |
-                      <span class="film-year">Film year</span>
-                      <span class="film-rating">10.0</span>
-                    </p>
-                  </div>
-                </li> -->
               </ul>
-              <div class="wrap">
-                <ul class="pagination">
-                    <li><a href="#">&#129120</a></li>
-                    <li><a class="active" href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&#129122</a></li>
-                </ul>
-              </div>
+              <button id="nextBtn" class="startNextPage">next</button>
 
+              <ul class="pagination">
+                <li><a href="#">&#129120;</a></li>
+                <li><a class="active" href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&#129122;</a></li>
+              </ul>
             </div>
-            <!-- test -->
           </section>
         </main>
       </div>

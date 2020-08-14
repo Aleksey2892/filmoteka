@@ -1,3 +1,5 @@
+import refs from './refs';
+
 function doVisible() {
   refs.errorNull.classList.add('error-visible');
   refs.nextPage.classList.add('visually-hidden');

@@ -9,7 +9,7 @@ export default function renderCard(filmsList) {
     elem.genre_ids = getGenreNames(elem.genre_ids).join(', ');
 
     if (elem.poster_path === null) {
-      elem.poster_path = 'https://cutt.ly/bd8IOZ4';
+      elem.poster_path = 'https://numl.org/z25';
     } else {
       elem.poster_path = `https://image.tmdb.org/t/p/w500/${elem.poster_path}`;
     }
