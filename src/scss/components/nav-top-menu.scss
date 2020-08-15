@@ -11,7 +11,8 @@
   // @extend %link;
   // @extend %link:hover;
 
-  &:hover {
+  &:hover,
+  &.active-menu {
     border-bottom: 2px solid #ff6b08;
   }
 }

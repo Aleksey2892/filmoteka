@@ -50,7 +50,7 @@
           <div class="container">
             <header class="header">
               <h1>
-                <a class="title-link" href="#">
+                <a class="title-link" href="./index.html">
                   <img
                     class="logo"
                     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLWZpbG0iPjxyZWN0IHg9IjIiIHk9IjIiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcng9IjIuMTgiIHJ5PSIyLjE4Ij48L3JlY3Q+PGxpbmUgeDE9IjciIHkxPSIyIiB4Mj0iNyIgeTI9IjIyIj48L2xpbmU+PGxpbmUgeDE9IjE3IiB5MT0iMiIgeDI9IjE3IiB5Mj0iMjIiPjwvbGluZT48bGluZSB4MT0iMiIgeTE9IjEyIiB4Mj0iMjIiIHkyPSIxMiI+PC9saW5lPjxsaW5lIHgxPSIyIiB5MT0iNyIgeDI9IjciIHkyPSI3Ij48L2xpbmU+PGxpbmUgeDE9IjIiIHkxPSIxNyIgeDI9IjciIHkyPSIxNyI+PC9saW5lPjxsaW5lIHgxPSIxNyIgeTE9IjE3IiB4Mj0iMjIiIHkyPSIxNyI+PC9saW5lPjxsaW5lIHgxPSIxNyIgeTE9IjciIHgyPSIyMiIgeTI9IjciPjwvbGluZT48L3N2Zz4="
@@ -62,11 +62,23 @@
 
               <nav class="nav-top-menu">
                 <ul class="top-menu-list">
-                  <li class="top-menu-item"><a href="#">Home</a></li>
+                  <li class="top-menu-item">
+                    <a class="active-menu" href="./index.html">Home</a>
+                  </li>
                   <li class="top-menu-item"><a href="#">My library</a></li>
                 </ul>
               </nav>
             </header>
+
+            <div class="authorization-block">
+              <button class="btn-login btn-default isonline-active">
+                Authorization
+              </button>
+              <div class="authorization-block__data">
+                <span class="username">User Name</span>
+                <button class="btn-logout btn-default">Log out</button>
+              </div>
+            </div>
 
             <form class="search-block">
               <input
@@ -145,7 +157,7 @@
                   </div>
                 </li>
               </ul>
-              <button id="nextBtn" class="startNextPage">next</button>
+              <button id="nextBtn" class="start-next-page">next</button>
 
               <ul class="pagination">
                 <li><a href="#">&#129120;</a></li>

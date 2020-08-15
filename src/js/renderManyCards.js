@@ -9,7 +9,9 @@ export default function renderCard(filmsList) {
     elem.genre_ids = getGenreNames(elem.genre_ids).join(', ');
 
     if (elem.poster_path === null) {
-      elem.poster_path = 'https://numl.org/z25';
+      // elem.poster_path = 'https://numl.org/z25';
+      elem.poster_path =
+        'https://www.indulgemassager.com/assets/frontend/indulge/images/no-profile-pic.jpg';
     } else {
       elem.poster_path = `https://image.tmdb.org/t/p/w500/${elem.poster_path}`;
     }
