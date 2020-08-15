@@ -1,13 +1,14 @@
 {{#each this}}
- <li class="film-card" data-id="{{id}}">
+ <li class="film-card" >
    
   <img
     class="film-cover"
     src="{{poster_path}}"
     alt="{{original_title}}"
+    data-id="{{id}}"
   />
   <div class="film-info-wrapper">
-    <h3 class="film-name">{{original_title}}</h3>
+    <h3 class="film-name" data-id="{{id}}">{{original_title}} </h3>
 <div class="film-info-inner">
       <p class="film-info">
         <span class="film-genre" >{{genre_ids}}</span>

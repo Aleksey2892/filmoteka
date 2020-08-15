@@ -9,7 +9,7 @@ export default function startFetch() {
     `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${api_key}&page=${pageNumber.counter}`,
   )
     .then(data => {
-      return data.data.results;
+      return data.data;
     })
     .catch(error => {
       throw error;

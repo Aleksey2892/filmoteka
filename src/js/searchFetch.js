@@ -12,14 +12,7 @@ export function searchFetch(inputValue) {
     `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${inputValue}&page=${pageNumber.counter}`,
   )
     .then(data => {
-      ///////// for hidding button next
-      if (pageNumber.counter === data.data.total_pages) {
-        console.log('last page');
-        document.getElementById('nextBtn').hidden = true;
-      }
-      ///////// for hidding button next
-
-      return data.data.results;
+      return data.data;
     })
     .catch(error => {
       throw error;
