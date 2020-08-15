@@ -62,10 +62,12 @@
 
               <nav class="nav-top-menu">
                 <ul class="top-menu-list">
-                  <li class="top-menu-item">
-                    <a class="active-menu" href="./index.html">Home</a>
+                  <li class="top-menu-item home">
+                    <a class="active-menu" href="#">Home</a>
                   </li>
-                  <li class="top-menu-item"><a href="#">My library</a></li>
+                  <li class="top-menu-item library-button">
+                    <a href="#">My library</a>
+                  </li>
                 </ul>
               </nav>
             </header>
@@ -106,9 +108,19 @@
               Search result not successful. Enter the correct movie name and try
               again.
             </p>
+
             <p class="error-search search-null">
               Please enter search word
             </p>
+
+            <ul class="btn-container">
+              <li class="btn-container-item watched-button visually-hidden">
+                <a href="#">WATCHED</a>
+              </li>
+              <li class="btn-container-item queue-button visually-hidden">
+                <a href="#">QUEUE</a>
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -153,6 +165,5 @@
         </div>
       </footer>
     </div>
-    <!-- <script type="text/javascript" src="main.js"></script> -->
   </body>
 </html>

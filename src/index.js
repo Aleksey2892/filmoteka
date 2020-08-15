@@ -6,3 +6,4 @@ import './js/logOut';
 import './js/gallery';
 import './js/oneCardFetch';
 import './js/renderSingleCard';
+import './js/top-buttons.js';
