@@ -1,13 +1,15 @@
 import refs from './refs';
 
-function doVisible() {
-  refs.errorNull.classList.add('error-visible');
+function doVisible(item) {
+  item.classList.add('error-visible');
   refs.nextPage.classList.add('visually-hidden');
 }
 
-function doNotVisible() {
-  refs.errorNull.classList.remove('error-visible');
+function doNotVisible(item) {
+  item.classList.remove('error-visible');
   refs.nextPage.classList.remove('visually-hidden');
 }
 
 export { doNotVisible, doVisible };
+
+// errorNull;

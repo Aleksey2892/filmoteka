@@ -51,9 +51,10 @@ refs.form.addEventListener('submit', event => {
 
   // visible input value error
   if (event.currentTarget.elements.search.value === '') {
-    doVisible();
+    doNotVisible(refs.errorWrong);
+    doVisible(refs.errorNull);
   } else {
-    doNotVisible();
+    doNotVisible(refs.errorNull);
     inputValue = event.currentTarget.elements.search.value;
 
     searchFetch(inputValue).then(data => {
@@ -61,10 +62,11 @@ refs.form.addEventListener('submit', event => {
       if (data.page === data.total_pages) {
         document.querySelector('#next-btn').hidden = true;
       } else if (data.results.length === 0) {
-        doVisible();
+        refs.errorWrong.classList.add('error-visible');
+        doVisible(refs.errorWrong);
       } else {
         document.querySelector('#next-btn').hidden = false;
-        doNotVisible();
+        doNotVisible(refs.errorWrong);
       }
       renderCard(data.results);
     });

@@ -47,10 +47,16 @@
   cursor: pointer;
 }
 
-.error-search {
-  margin-left: auto;
-  margin-right: auto;
+.error-block {
+  position: relative;
   width: 100%;
+}
+
+.error-search {
+  position: absolute;
+  top: 400%;
+  left: 10%;
+  width: 80%;
   padding: 5px;
   font-size: 12px;
   font-weight: 300;
@@ -58,12 +64,13 @@
   border-radius: 5px;
   color: #ff0825;
   background-color: rgba(0, 0, 0, 0.6);
-  // transform: translateY(100%); // Перекрывает кнопки, и зачем ставить, если ни на что не влияет?
-  transition: all 0.2s linear;
+  transform: translate(0%, -10%);
   opacity: 0;
+
+  @include transition;
 }
 
 .error-visible {
   opacity: 1;
-  transform: translateY(0%);
+  top: 200%;
 }
