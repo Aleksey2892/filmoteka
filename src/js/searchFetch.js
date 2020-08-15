@@ -1,4 +1,5 @@
 import axios from 'axios';
+import refs from './refs';
 
 const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
 export const pageNumber = {
@@ -11,8 +12,7 @@ export function searchFetch(inputValue) {
     `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${inputValue}&page=${pageNumber.counter}`,
   )
     .then(data => {
-      pageNumber.counter += 1;
-      return data.data.results;
+      return data.data;
     })
     .catch(error => {
       throw error;

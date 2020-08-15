@@ -11,7 +11,7 @@ const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
 
 //  loading first page - popular films
 startFetch().then(data => {
-  renderCard(data);
+  renderCard(data.results);
 });
 
 // next page Btn listener
@@ -23,7 +23,7 @@ function onNextBtn() {
     onSearchNextBtn(inputValue);
   } else {
     startFetch().then(data => {
-      renderCard(data);
+      renderCard(data.results);
     });
   }
 }
@@ -31,7 +31,13 @@ function onNextBtn() {
 // load more button after search
 function onSearchNextBtn(inputValue) {
   searchFetch(inputValue).then(data => {
-    renderCard(data);
+    if (data.page === data.total_pages) {
+      document.querySelector('#next-btn').hidden = true;
+    } else {
+      document.querySelector('#next-btn').hidden = false;
+    }
+
+    renderCard(data.results);
   });
 }
 
@@ -51,12 +57,16 @@ refs.form.addEventListener('submit', event => {
     inputValue = event.currentTarget.elements.search.value;
 
     searchFetch(inputValue).then(data => {
-      if (data.length === 0) {
+      // console.log(data);
+      if (data.page === data.total_pages) {
+        document.querySelector('#next-btn').hidden = true;
+      } else if (data.results.length === 0) {
         doVisible();
       } else {
+        document.querySelector('#next-btn').hidden = false;
         doNotVisible();
       }
-      renderCard(data);
+      renderCard(data.results);
     });
   }
 });
