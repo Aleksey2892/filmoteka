@@ -11,7 +11,7 @@ export function searchFetch(inputValue) {
     `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${inputValue}&page=${pageNumber.counter}`,
   )
     .then(data => {
-      pageNumber.counter += 1;
+      // pageNumber.counter += 1;
       return data.data.results;
     })
     .catch(error => {
