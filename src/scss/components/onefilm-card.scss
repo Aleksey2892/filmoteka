@@ -22,7 +22,6 @@
   object-fit: cover;
   width: 100%;
   height: 400px;
-  margin-bottom: 35px;
   border-radius: 5px;
 
   @include tablets {
@@ -32,7 +31,7 @@
 
   @include desktop {
     width: 420px;
-    height: 520px;
+    height: 620px;
   }
 }
 
@@ -66,10 +65,6 @@
 .onefilm__about {
   font-size: 11px;
   line-height: 20px;
-
-  & h4 {
-    margin-bottom: 10px;
-  }
 }
 
 .buttons__block {

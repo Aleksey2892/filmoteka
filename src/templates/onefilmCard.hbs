@@ -1,7 +1,7 @@
 <li class="onefilm-card">
-    <img class="onefilm-cover" src="{{}}" alt="film-cover" />
+    <img class="onefilm-cover" src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="film-cover" />
     <div class="onefilm-info-wrapper">
-        <h3 class="onefilm-name">{{}}</h3>
+        <h3 class="onefilm-name">{{original_title}}</h3>
         <div class="onefilm__rating">
             <div class="rating__titles">
                 <p class="rating__title">Vota / Votes</p>
@@ -11,16 +11,17 @@
             </div>
             <div class="rating__values">
                 <p class="rating__value">
-                    <span class="film-rating">{{}}</span> / {{}}
+                    <span class="film-rating onefilm-rating">{{vote_average}}</span> / {{vote_count}}
                 </p>
-                <p class="rating__value">{{}}</p>
-                <p class="rating__value">{{}}</p>
-                <p class="rating__value">{{}}</p>
+                <p class="rating__value">{{popularity}}</p>
+                <p class="rating__value">{{original_title}}</p>
+
+                <p class="rating__value">{{#each genres}}{{this.name}}; {{/each}}</p>
             </div>
         </div>
         <div class="onefilm__about">
             <h4>About</h4>
-            <p>{{}}</p>
+            <p>{{overview}}</p>
         </div>
         <div class="buttons__block">
             <button class="onefilm__btn">Add to watched</button>
