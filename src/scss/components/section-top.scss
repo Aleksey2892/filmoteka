@@ -14,13 +14,11 @@
 
   @include desktop {
     background-position: center;
+    background-size: cover;
   }
 }
 
 .section-top-lib {
-  padding-top: 46px;
-  padding-bottom: 20px;
-  min-height: 230px;
   background: linear-gradient(
       to right,
       rgba(0, 0, 0, 0.56) 0%,
