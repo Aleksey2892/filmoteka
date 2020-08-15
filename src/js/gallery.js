@@ -38,6 +38,9 @@ function onSearchNextBtn(inputValue) {
 // on submit
 refs.form.addEventListener('submit', event => {
   event.preventDefault();
+
+  refs.activeMenu.classList.remove('active-menu');
+
   clearPage();
 
   // visible input value error
