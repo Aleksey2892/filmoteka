@@ -1,4 +1,5 @@
 import axios from 'axios';
+import refs from './refs';
 
 const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
 export const pageNumber = {
@@ -11,7 +12,13 @@ export function searchFetch(inputValue) {
     `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${inputValue}&page=${pageNumber.counter}`,
   )
     .then(data => {
-      // pageNumber.counter += 1;
+      ///////// for hidding button next
+      if (pageNumber.counter === data.data.total_pages) {
+        console.log('last page');
+        document.getElementById('nextBtn').hidden = true;
+      }
+      ///////// for hidding button next
+
       return data.data.results;
     })
     .catch(error => {

@@ -51,7 +51,6 @@ refs.form.addEventListener('submit', event => {
     inputValue = event.currentTarget.elements.search.value;
 
     searchFetch(inputValue).then(data => {
-      console.log(data);
       if (data.length === 0) {
         doVisible();
       } else {

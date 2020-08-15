@@ -24,7 +24,6 @@ export default function renderCard(filmsList) {
     if (elem.release_date == '' || elem.release_date === undefined) {
       elem.release_date = 'no info';
     } else {
-      console.log(elem.release_date);
       elem.release_date = elem.release_date.substr(0, 4);
     }
 
