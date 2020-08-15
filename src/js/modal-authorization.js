@@ -6,6 +6,7 @@ document.querySelector('.btn-login').onclick = () => {
     .create(
       `
       <form class="login-block">
+      <h2 class="login-block__title">Authorization</h2>
       <input
         class="login-block__user-name"
         type="text"

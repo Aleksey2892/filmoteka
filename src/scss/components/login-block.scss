@@ -5,6 +5,13 @@
   background: $main-white;
 }
 
+.login-block__title {
+  margin-bottom: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  color: $color-accent;
+}
+
 .login-block__user-name,
 .login-block__password {
   margin-bottom: 20px;
