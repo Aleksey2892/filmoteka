@@ -90,6 +90,8 @@
   border-radius: 5px;
   background-color: $main-white;
   cursor: pointer;
+  @include transition;
+
   &:hover {
     color: $main-white;
     background-color: #ff6b08;
