@@ -5,9 +5,12 @@
   color: $main-white;
 }
 
+.wrapper-btn {
+  display: none;
+}
+
 .btn-default {
   padding: 3px 10px;
-  margin-left: auto;
   font-size: 12px;
   text-transform: uppercase;
   border: none;
@@ -26,19 +29,23 @@
   }
 }
 
-.btn-login {
-  display: none;
+.btn-reg {
+  margin-left: 10px;
 }
 
 .authorization-block__data {
   display: none;
+  margin-left: auto;
 }
 
 .isonline-active {
-  display: block;
+  display: flex;
+  align-items: center;
   margin-left: auto;
 }
 
 .username {
-  margin-right: 8px;
+  margin: 0 8px;
+  font-size: 14px;
+  text-transform: uppercase;
 }

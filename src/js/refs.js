@@ -1,5 +1,6 @@
 const refs = {
   activeMenu: document.querySelector('.active-menu'),
+  logOutBtn: document.querySelector('.btn-logout'),
   form: document.querySelector('.search-block'),
   listFilms: document.querySelector('.films-list'),
   nextPage: document.querySelector('.start-next-page'),

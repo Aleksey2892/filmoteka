@@ -53,6 +53,7 @@
     "basiclightbox": "^5.0.3",
     "core-js": "^3.6.4",
     "handlebars": "^4.7.3",
-    "toastr": "^2.1.4"
+    "toastr": "^2.1.4",
+    "uuid": "^8.3.0"
   }
 }
