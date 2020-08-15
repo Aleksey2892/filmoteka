@@ -1,5 +1,5 @@
 .section-top {
-  padding-top: 46px;
+  padding-top: 15px;
   padding-bottom: 20px;
   min-height: 230px;
   background: linear-gradient(
@@ -10,10 +10,10 @@
     url(images/bg/bg-header.jpg);
   background-position: right 84% bottom 0%;
   background-repeat: no-repeat;
+  background-size: cover;
 
   @include desktop {
     background-position: center;
-    background-size: cover;
   }
 }
 
