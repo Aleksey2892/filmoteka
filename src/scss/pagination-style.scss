@@ -1,16 +1,18 @@
+.wrap {
+  margin-bottom: 25px;
+}
+
 .pagination {
-  display: inline-block;
+  // display: inline-block;
   list-style-type: none;
   display: flex;
   justify-content: center;
-  margin-bottom: 25px;
 }
 
 .pagination a {
   color: black;
-  float: left;
+  // float: left; <--- из-за него троеточие с обоих сторон куда-то пропадает;
   padding: 8px 16px;
-  font-size: 13px;
   text-decoration: none;
 }
 

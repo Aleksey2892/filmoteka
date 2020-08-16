@@ -13,6 +13,7 @@ export function searchFetch(inputValue) {
     `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${inputValue}&page=${pageNumber.counter}`,
   )
     .then(data => {
+      // console.log(data.data.total_pages);
       return data.data;
     })
     .catch(error => {
