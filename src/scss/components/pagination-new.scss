@@ -1,0 +1,76 @@
+// html {
+//   height: 100%;
+//   width: 100%;
+// }
+
+// body {
+//   margin: 0;
+//   height: 100%;
+//   width: 100%;
+//   text-align: center;
+//   font-family: Arial, sans-serif;
+// }
+
+// body:before {
+//   // content: '';
+//   display: inline-block;
+//   width: 0;
+//   height: 100%;
+//   vertical-align: middle;
+// }
+
+#pagination {
+  // display: inline-block;
+  vertical-align: middle;
+  border-radius: 4px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+#pagination a {
+  display: inline-block;
+  vertical-align: middle;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  font-size: 13px;
+  padding: 15px 15px 15px 15px;
+}
+
+#pagination i {
+  color: black;
+  font-weight: bold;
+}
+
+#pagination a {
+  margin: 10px 2px 0 2px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#pagination a.current {
+  background-color: $color-accent;
+  color: white;
+}
+
+.arrow {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.arrow-left {
+  background-image: url('images/icons/arrow-left.svg');
+}
+
+.arrow-right {
+  background-image: url('images/icons/arrow-right.svg');
+}
+
+/*это для стрелок, по макету они всегда серые, нужно добавить по классу в разметку*/
+// .arrow-right,
+// .arrow-left {
+//   background-color: $main-grey;
+// }

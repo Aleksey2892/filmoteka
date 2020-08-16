@@ -134,9 +134,9 @@ export default function paginationLogic(totalPage) {
         Create: function (e) {
 
             var html = [
-                '<a id="prev-btn" class="start-prev-page">&#9668;</a>', // previous button
+                '<a id="prev-btn" class="start-prev-page arrow arrow-left"></a>', // previous button
                 '<span class="pag-number"></span>',  // pagination container
-                '<a id="next-btn" class="start-next-page">&#9658;</a>'  // next button
+                '<a id="next-btn" class="start-next-page arrow arrow-right"></a>'  // next button
             ];
 
             e.innerHTML = html.join('');
