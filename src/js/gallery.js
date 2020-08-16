@@ -11,7 +11,8 @@ const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
 
 //  loading first page - popular films
 startFetch().then(data => {
-  renderCard(data.results);
+  // timeout for spinner animation
+  renderWithTimeout(data.results);
 });
 
 // next page Btn listener
@@ -37,7 +38,8 @@ function onSearchNextBtn(inputValue) {
       document.querySelector('#next-btn').hidden = false;
     }
 
-    renderCard(data.results);
+    // timeout for spinner animation
+    renderWithTimeout(data.results);
   });
 }
 
@@ -68,7 +70,18 @@ refs.form.addEventListener('submit', event => {
         document.querySelector('#next-btn').hidden = false;
         doNotVisible(refs.errorWrong);
       }
-      renderCard(data.results);
+
+      // timeout for spinner animation
+      renderWithTimeout(data.results);
     });
   }
 });
+
+function renderWithTimeout(data) {
+  // timeout for spinner animation
+  refs.spinnerLoader.classList.remove('not-visible');
+  setTimeout(() => {
+    renderCard(data);
+    refs.spinnerLoader.classList.add('not-visible');
+  }, 1500);
+}

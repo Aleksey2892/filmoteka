@@ -8,6 +8,7 @@ export const pageNumber = {
 
 export function searchFetch(inputValue) {
   pageNumber.counter += 1;
+
   return axios(
     `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${inputValue}&page=${pageNumber.counter}`,
   )

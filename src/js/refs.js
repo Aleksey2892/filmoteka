@@ -6,6 +6,7 @@ const refs = {
   nextPage: document.querySelector('.start-next-page'),
   errorWrong: document.querySelector('.search-wrong'),
   errorNull: document.querySelector('.search-null'),
+  spinnerLoader: document.querySelector('.cssload-dots'),
 };
 
 export default refs;
