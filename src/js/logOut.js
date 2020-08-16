@@ -19,4 +19,5 @@ function logOut() {
   });
 
   localStorage.setItem('users', JSON.stringify(updateIsOnline));
+  window.location.reload();
 }
