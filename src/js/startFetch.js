@@ -3,9 +3,8 @@ import axios from 'axios';
 import refs from './refs';
 
 const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
-const pageNumber = 1;
 
-export default function startFetch() {
+export default function startFetch(pageNumber = 1) {
   // pageNumber.counter += 1;
 
   refs.spinnerLoader.classList.remove('not-visible');
