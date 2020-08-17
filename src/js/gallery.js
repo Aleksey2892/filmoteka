@@ -7,11 +7,12 @@ import paginationLogic from './paginationLogic';
 import { doNotVisible, doVisible } from './visibleFunc';
 
 let inputValue;
-
+let fetchType = 'start';
 const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
 
 //  loading first page - popular films
 startFetch().then(data => {
+  fetchType = 'start';
   // timeout for spinner animation
   renderWithTimeout(data);
 });
@@ -34,6 +35,7 @@ refs.form.addEventListener('submit', event => {
     inputValue = event.currentTarget.elements.search.value;
 
     searchFetch(inputValue).then(data => {
+      fetchType = 'search';
       console.log(inputValue);
       if (data.results.length === 0) {
         document.querySelector('#pagination').classList.add('not-visible');
@@ -62,15 +64,15 @@ function renderWithTimeout(data, currentPage) {
 
     paginatRef.classList.remove('not-visible');
 
-    if (inputValue) {
+    if (fetchType === 'search') {
       paginatRef.addEventListener('click', handleSearchPagination);
-    } else {
+    } else if (fetchType === 'start') {
       paginatRef.addEventListener('click', handlePagination);
-    };
+    }
 
     refs.spinnerLoader.classList.add('not-visible');
   }, 1000);
-};
+}
 
 function handlePagination(event) {
   const currentPageNum = Number(
@@ -99,6 +101,7 @@ function handlePagination(event) {
       // console.log(data);
     });
   }
+  console.log('РАБОТАЕТ START');
 }
 
 function handleSearchPagination(event) {
@@ -113,25 +116,33 @@ function handleSearchPagination(event) {
     searchFetch(inputValue, targetNum).then(data => {
       clearPage();
       renderWithTimeout(data, Number(targetNum));
+      console.log(data, 'search');
     });
   } else if (event.target.classList.contains('arrow-left')) {
-    searchFetch(inputValue, changeNumPage('minus', currentPageNum)).then(data => {
-      clearPage();
-      renderWithTimeout(data, currentPageNum);
-      // console.log(data);
-    });
+    searchFetch(inputValue, changeNumPage('minus', currentPageNum)).then(
+      data => {
+        fetchType = 'search';
+        clearPage();
+        renderWithTimeout(data, currentPageNum);
+        console.log(data, 'search');
+      },
+    );
   } else if (event.target.classList.contains('arrow-right')) {
     // console.log('kuku right');
-    searchFetch(inputValue, changeNumPage('plus', currentPageNum)).then(data => {
-      clearPage();
-      renderWithTimeout(data, currentPageNum);
-      // console.log(data);
-    });
+    searchFetch(inputValue, changeNumPage('plus', currentPageNum)).then(
+      data => {
+        fetchType = 'search';
+        clearPage();
+        renderWithTimeout(data, currentPageNum);
+        console.log(data, 'search');
+      },
+    );
   }
+  console.log('РАБОТАЕТ SEARCH');
 }
 
 function changeNumPage(sign, num) {
-  console.log(num)
+  console.log(num);
   if (num === 1) {
     return;
   } else if (sign === 'minus') {
