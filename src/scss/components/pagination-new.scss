@@ -17,6 +17,10 @@
   text-align: center;
   font-size: 13px;
   padding: 15px 15px 15px 15px;
+
+  &:hover {
+    background-color: $details-grey +80%;
+  }
 }
 
 .pagination i {

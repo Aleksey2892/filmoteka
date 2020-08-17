@@ -84,18 +84,21 @@ function handlePagination(event) {
   } else if (event.target.classList.contains('arrow-left')) {
     startFetch(changeNumPage('minus', currentPageNum)).then(data => {
       clearPage();
-      renderWithTimeout(data);
+      renderWithTimeout(data, currentPageNum);
+      console.log(data);
     });
   } else if (event.target.classList.contains('arrow-right')) {
     // console.log('kuku right');
     startFetch(changeNumPage('plus', currentPageNum)).then(data => {
       clearPage();
-      renderWithTimeout(data);
+      renderWithTimeout(data, currentPageNum);
+      console.log(data);
     });
   }
 }
 
 function changeNumPage(sign, num) {
+  console.log(num)
   if (num === 1) {
     return;
   } else if (sign === 'minus') {
