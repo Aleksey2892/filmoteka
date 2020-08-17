@@ -7,3 +7,4 @@ import './js/gallery';
 import './js/oneCardFetch';
 import './js/renderSingleCard';
 import './js/top-buttons.js';
+import './js/paginationLogic';

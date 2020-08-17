@@ -2,8 +2,9 @@ import refs from './refs';
 import { searchFetch } from './searchFetch';
 import startFetch from './startFetch';
 import clearPage from './clearPage';
-import { doNotVisible, doVisible } from './visibleFunc';
 import renderCard from './renderManyCards';
+import paginationLogic from './paginationLogic';
+import { doNotVisible, doVisible } from './visibleFunc';
 
 let inputValue;
 
@@ -12,36 +13,8 @@ const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
 //  loading first page - popular films
 startFetch().then(data => {
   // timeout for spinner animation
-  renderWithTimeout(data.results);
+  renderWithTimeout(data);
 });
-
-// next page Btn listener
-refs.nextPage.addEventListener('click', onNextBtn);
-
-// load more button default (after loading page)
-function onNextBtn() {
-  if (inputValue) {
-    onSearchNextBtn(inputValue);
-  } else {
-    startFetch().then(data => {
-      renderCard(data.results);
-    });
-  }
-}
-
-// load more button after search
-function onSearchNextBtn(inputValue) {
-  searchFetch(inputValue).then(data => {
-    if (data.page === data.total_pages) {
-      document.querySelector('#next-btn').hidden = true;
-    } else {
-      document.querySelector('#next-btn').hidden = false;
-    }
-
-    // timeout for spinner animation
-    renderWithTimeout(data.results);
-  });
-}
 
 // on submit
 refs.form.addEventListener('submit', event => {
@@ -55,33 +28,82 @@ refs.form.addEventListener('submit', event => {
   if (event.currentTarget.elements.search.value === '') {
     doNotVisible(refs.errorWrong);
     doVisible(refs.errorNull);
+
+    document.querySelector('#pagination').classList.add('not-visible');
   } else {
     doNotVisible(refs.errorNull);
     inputValue = event.currentTarget.elements.search.value;
 
     searchFetch(inputValue).then(data => {
-      // console.log(data);
-      if (data.page === data.total_pages) {
-        document.querySelector('#next-btn').hidden = true;
-      } else if (data.results.length === 0) {
-        refs.errorWrong.classList.add('error-visible');
+      if (data.results.length === 0) {
+        document.querySelector('#pagination').classList.add('not-visible');
+
         doVisible(refs.errorWrong);
       } else {
-        document.querySelector('#next-btn').hidden = false;
         doNotVisible(refs.errorWrong);
-      }
+        document.querySelector('#pagination').classList.add('not-visible');
 
-      // timeout for spinner animation
-      renderWithTimeout(data.results);
+        // timeout for spinner animation
+        renderWithTimeout(data);
+      }
     });
   }
 });
 
-function renderWithTimeout(data) {
+function renderWithTimeout(data, currentPage) {
   // timeout for spinner animation
   refs.spinnerLoader.classList.remove('not-visible');
+
   setTimeout(() => {
-    renderCard(data);
+    renderCard(data.results);
+    paginationLogic(data.total_pages, currentPage);
+
+    const paginatRef = document.querySelector('#pagination');
+
+    paginatRef.classList.remove('not-visible');
+
+    paginatRef.addEventListener('click', handlePagination);
+
     refs.spinnerLoader.classList.add('not-visible');
   }, 1500);
+}
+
+function handlePagination(event) {
+  const currentPageNum = Number(
+    event.currentTarget.querySelector('.current').textContent,
+  );
+
+  if (event.target.textContent !== '') {
+    const targetNum = event.target.textContent;
+    document.querySelector('#pagination').classList.add('not-visible');
+
+    startFetch(targetNum).then(data => {
+      clearPage();
+      renderWithTimeout(data, Number(targetNum));
+    });
+  } else if (event.target.classList.contains('arrow-left')) {
+    startFetch(changeNumPage('minus', currentPageNum)).then(data => {
+      clearPage();
+      renderWithTimeout(data, currentPageNum);
+      console.log(data);
+    });
+  } else if (event.target.classList.contains('arrow-right')) {
+    // console.log('kuku right');
+    startFetch(changeNumPage('plus', currentPageNum)).then(data => {
+      clearPage();
+      renderWithTimeout(data, currentPageNum);
+      console.log(data);
+    });
+  }
+}
+
+function changeNumPage(sign, num) {
+  console.log(num)
+  if (num === 1) {
+    return;
+  } else if (sign === 'minus') {
+    return num;
+  } else if (sign === 'plus') {
+    return num;
+  }
 }

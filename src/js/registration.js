@@ -10,9 +10,11 @@ export default function registration(event) {
   event.preventDefault();
 
   const localStorageData = JSON.parse(localStorage.getItem('users'));
-  const userName = document.querySelector('.login-block__user-name').value;
+  let userName = document.querySelector('.login-block__user-name').value;
   const userPass = document.querySelector('.login-block__password').value;
   let haveUser;
+
+  userName = userName.toLowerCase();
 
   localStorageData.find(elem => {
     if (elem.userName === userName) {
@@ -31,8 +33,9 @@ export default function registration(event) {
     users.push(user);
 
     localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('isOnline', JSON.stringify(userName));
 
-    addOnlineUser();
+    addOnlineUser(userName);
 
     notification['success']('', 'Are you registered');
   }
