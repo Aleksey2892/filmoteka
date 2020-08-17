@@ -7,6 +7,7 @@ const refs = {
   errorWrong: document.querySelector('.search-wrong'),
   errorNull: document.querySelector('.search-null'),
   spinnerLoader: document.querySelector('.cssload-dots'),
+  pagination: document.querySelector('#pagination'),
 };
 
 export default refs;

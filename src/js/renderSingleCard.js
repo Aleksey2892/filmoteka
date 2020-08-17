@@ -11,6 +11,7 @@ refs.listFilms.addEventListener('click', event => {
         // console.log(event.target.dataset.id);
         cardFetch(event.target.dataset.id).then(obj => {
             clearPage();
+            refs.pagination.classList.add('not-visible');
             refs.listFilms.insertAdjacentHTML('beforeend', onefilmCard(obj));
         });
     }

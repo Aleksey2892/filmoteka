@@ -19,5 +19,7 @@ function logOut() {
   });
 
   localStorage.setItem('users', JSON.stringify(updateIsOnline));
+  localStorage.setItem('isOnline', 'no one is online');
+
   window.location.reload();
 }

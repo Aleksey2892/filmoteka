@@ -17,7 +17,8 @@ try {
 
     users.find(el => {
       if (el.isOnline === true) {
-        addOnlineUser();
+        const userName = JSON.parse(localStorage.getItem('isOnline'));
+        addOnlineUser(userName);
       }
     });
   }
