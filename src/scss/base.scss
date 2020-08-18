@@ -23,6 +23,7 @@ body {
 }
 
 .content {
+  position: relative;
   flex: 1 0 auto;
 }
 
@@ -69,4 +70,14 @@ input[type='radio'].visually-hidden {
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
+}
+
+.wrapper-films {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.section-films {
+  padding-bottom: 80px;
 }

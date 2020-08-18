@@ -14,7 +14,7 @@ export default function startFetch(pageNumber = 1) {
   )
     .then(data => {
       refs.spinnerLoader.classList.add('not-visible');
-
+      
       return data.data;
     })
     .catch(error => {
