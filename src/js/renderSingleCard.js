@@ -6,6 +6,7 @@ import clearPage from './clearPage';
 import dataFromLocal from './dataFromLocal';
 import { users } from './defaultLoadLocal';
 import notification from 'toastr';
+import refsButton from './refs-buttons';
 
 // let test = {
 //   watched: [],
@@ -99,6 +100,9 @@ refs.listFilms.addEventListener('click', event => {
     cardFetch(event.target.dataset.id).then(obj => {
       clearPage();
 
+      refsButton.homeBg.classList.remove('section-top');
+      refsButton.homeBg.classList.add('section-top-details');
+
       refs.pagination.classList.add('not-visible');
       refs.listFilms.insertAdjacentHTML('beforeend', onefilmCard(obj));
 
@@ -108,87 +112,6 @@ refs.listFilms.addEventListener('click', event => {
       document
         .querySelector('.buttons__block')
         .addEventListener('click', addToLocal);
-      /////////////////////////////////////////////////////////////////////
-      //add Arr to localstorage
-      //listener for card btns
-      // refs.listFilms
-      //   .querySelector('.buttons__block')
-      //   .addEventListener('click', event => {
-      //     console.log('on click btn in card:', event.target);
-      //     //for watched
-      //     if (event.target.classList.contains('add_watched')) {
-      //       pushLocalArr(obj, 'watched');
-      //       console.log(pushLocalArr(obj, 'watched'));
-      //       localStorage.setItem('test', JSON.stringify(test));
-      //     }
-      //     if (event.target.classList.contains('add_queue')) {
-      //       // pushLocalArr(obj, 'queue');
-
-      //       if (test[0].queue.length < 1) {
-      //         console.log('add first');
-      //         return test[0].queue.push(obj);
-      //       } else {
-      //         //пройтись по массиву искать совпадения. !!!!!
-      //         const sameItem = test[0].queue.find(el => el === obj);
-      //         if (sameItem) {
-      //           console.log('Selected'); //добавить в кнопку
-
-      //           //если нет совпадений, то добавить в массив
-      //         } else {
-      //           console.log('add more');
-      //           return test[0].queue.push(obj);
-      //         }
-      //       }
-
-      //       console.log(pushLocalArr(obj, 'queue'));
-
-      //       localStorage.setItem('test', JSON.stringify(test));
-      //     }
-      //   });
     });
   }
 });
-
-// export let test = {
-//   watched: [],
-//   queue: [],
-// };
-
-// function pushLocalArr(item, arrName) {
-//   console.log('vfc', test);
-
-//   //   if (arrName === 'watched') {
-//   //если массив пустой:
-//   if (test[0].watched.length < 1) {
-//     console.log('add first');
-//     return test[0].watched.push(item);
-//   } else {
-//     //пройтись по массиву искать совпадения. !!!!!
-//     const sameItem = test[0].watched.find(el => el === item);
-//     if (sameItem) {
-//       console.log('Selected'); //добавить в кнопку
-
-//       //если нет совпадений, то добавить в массив
-//     } else {
-//       console.log('add more');
-//       return test[0].watched.push(item);
-//     }
-//   }
-//   } else {
-//     if (test.queue.length < 1) {
-//       console.log('add first');
-//       return test.queue.push(item);
-//     } else {
-//       //пройтись по массиву искать совпадения. !!!!!
-//       const sameItem = test.queue.find(el => el === item);
-//       if (sameItem) {
-//         console.log('Selected'); //добавить в кнопку
-
-//         //если нет совпадений, то добавить в массив
-//       } else {
-//         console.log('add more');
-//         return test.queue.push(item);
-//       }
-//     }
-//   }
-// }
