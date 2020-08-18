@@ -4,6 +4,10 @@ class User {
     this.userName = userName;
     this.userPass = userPass;
     this.isOnline = isOnline;
+    this.lib = {
+      watched: [],
+      queue: [],
+    };
   }
 }
 

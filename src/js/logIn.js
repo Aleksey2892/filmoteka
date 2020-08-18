@@ -1,7 +1,5 @@
 import addOnlineUser from './addOnlineUser';
 import notification from 'toastr';
-import './toastrSetting';
-import 'toastr/build/toastr.css';
 
 export default function logIn() {
   event.preventDefault();
@@ -16,6 +14,9 @@ export default function logIn() {
     if (userName === el.userName && userPass === el.userPass) {
       addOnlineUser(userName);
       el.isOnline = true;
+
+      localStorage.setItem('users', JSON.stringify(localStorageData));
+
       console.log('ку-ку епта, ты зашел!!!');
 
       notification['success']('You entered', `Hello, ${userName}`);
@@ -27,8 +28,7 @@ export default function logIn() {
       return true;
     }
 
-    localStorage.setItem('users', JSON.stringify(localStorageData));
-    localStorage.setItem('isOnline', JSON.stringify(userName));
+    localStorage.setItem('isOnline', userName);
 
     return false;
   });

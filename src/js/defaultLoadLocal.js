@@ -6,8 +6,19 @@ export let users = [
     userName: 'admin',
     userPass: 'admin',
     isOnline: false,
+    lib: {
+      watched: [],
+      queue: [],
+    },
   },
 ];
+
+// export let lib = [
+//   {
+//     watched: [],
+//     queue: [],
+//   },
+// ];
 
 try {
   if (!localStorage.getItem('users')) {
@@ -17,7 +28,7 @@ try {
 
     users.find(el => {
       if (el.isOnline === true) {
-        const userName = JSON.parse(localStorage.getItem('isOnline'));
+        const userName = localStorage.getItem('isOnline');
         addOnlineUser(userName);
       }
     });

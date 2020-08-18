@@ -1,5 +1,4 @@
 import './styles.scss';
-
 import './js/defaultLoadLocal';
 import './js/modal-authorization';
 import './js/logOut';
