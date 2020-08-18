@@ -13,7 +13,6 @@ const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
 
 //  loading first page - popular films
 startFetch().then(data => {
-  console.log(data.total_pages);
   totalPages = data.total_pages;
   fetchType = 'start';
   // timeout for spinner animation
@@ -38,7 +37,6 @@ refs.form.addEventListener('submit', event => {
     inputValue = event.currentTarget.elements.search.value;
 
     searchFetch(inputValue).then(data => {
-      console.log(data.total_pages);
       totalPages = data.total_pages;
       fetchType = 'search';
 
@@ -151,13 +149,10 @@ function handleSearchPagination(event) {
 
 function changeNumPage(sign, num) {
   if (num === 1) {
-    console.log(num);
     return;
   } else if (sign === 'minus') {
-    console.log(num);
     return num;
   } else if (sign === 'plus') {
-    console.log(num);
     return num;
   }
 }
@@ -167,9 +162,7 @@ function makeDisabled() {
 
   if (currentPageNum === 1) {
     document.querySelector('.arrow-left').setAttribute('disabled', 'true');
-    console.log('disabled left');
   } else if (currentPageNum === totalPages) {
-    console.log('disabled right');
     document.querySelector('.arrow-right').setAttribute('disabled', 'true');
   }
 }
