@@ -65,8 +65,10 @@ function renderWithTimeout(data, currentPage) {
     paginatRef.classList.remove('not-visible');
 
     if (fetchType === 'search') {
+      paginatRef.removeEventListener('click', handlePagination);
       paginatRef.addEventListener('click', handleSearchPagination);
     } else if (fetchType === 'start') {
+      paginatRef.removeEventListener('click', handleSearchPagination);
       paginatRef.addEventListener('click', handlePagination);
     }
 
@@ -88,12 +90,16 @@ function handlePagination(event) {
       renderWithTimeout(data, Number(targetNum));
     });
   } else if (event.target.classList.contains('arrow-left')) {
+    document.querySelector('#pagination').classList.add('not-visible');
+
     startFetch(changeNumPage('minus', currentPageNum)).then(data => {
       clearPage();
       renderWithTimeout(data, currentPageNum);
       // console.log(data);
     });
   } else if (event.target.classList.contains('arrow-right')) {
+    document.querySelector('#pagination').classList.add('not-visible');
+
     // console.log('kuku right');
     startFetch(changeNumPage('plus', currentPageNum)).then(data => {
       clearPage();
@@ -128,7 +134,6 @@ function handleSearchPagination(event) {
       },
     );
   } else if (event.target.classList.contains('arrow-right')) {
-    // console.log('kuku right');
     searchFetch(inputValue, changeNumPage('plus', currentPageNum)).then(
       data => {
         fetchType = 'search';

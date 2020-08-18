@@ -1,25 +1,37 @@
 .pagination {
-  // display: inline-block;
-  vertical-align: middle;
+  display: flex;
+  justify-content: center;
   border-radius: 4px;
 }
 
-.pagination {
+.pag-number {
   display: flex;
-  justify-content: center;
 }
 
-.pagination a {
-  display: inline-block;
+.pagination button,
+.pagination i {
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   vertical-align: middle;
   color: black;
   font-weight: bold;
   text-align: center;
   font-size: 13px;
-  padding: 15px 15px 15px 15px;
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
 
   &:hover {
-    background-color: $details-grey +80%;
+    background-color: $details-grey + 80%;
+  }
+
+  &:focus {
+    outline: $color-accent 1px solid;
   }
 }
 
@@ -28,27 +40,26 @@
   font-weight: bold;
 }
 
-.pagination a {
-  margin: 10px 2px 0 2px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.pagination a.current {
+.pagination button.current {
   background-color: $color-accent;
   color: white;
 }
 
-.arrow {
+.pagination .arrow {
+  border: none;
+  height: 40px;
+  width: 40px;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.arrow-left {
+.pagination .arrow-left {
   background-image: url('images/icons/arrow-left.svg');
 }
 
-.arrow-right {
+.pagination .arrow-right {
   background-image: url('images/icons/arrow-right.svg');
 }
 
