@@ -33,7 +33,7 @@ export default function registration(event) {
     users.push(user);
 
     localStorage.setItem('users', JSON.stringify(users));
-    localStorage.setItem('isOnline', JSON.stringify(userName));
+    localStorage.setItem('isOnline', userName);
 
     addOnlineUser(userName);
 

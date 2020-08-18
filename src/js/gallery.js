@@ -8,10 +8,13 @@ import { doNotVisible, doVisible } from './visibleFunc';
 
 let inputValue;
 let fetchType = 'start';
+let totalPages = 0;
 const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
 
 //  loading first page - popular films
 startFetch().then(data => {
+  console.log(data.total_pages);
+  totalPages = data.total_pages;
   fetchType = 'start';
   // timeout for spinner animation
   renderWithTimeout(data);
@@ -35,6 +38,8 @@ refs.form.addEventListener('submit', event => {
     inputValue = event.currentTarget.elements.search.value;
 
     searchFetch(inputValue).then(data => {
+      console.log(data.total_pages);
+      totalPages = data.total_pages;
       fetchType = 'search';
 
       if (data.results.length === 0) {
@@ -52,7 +57,7 @@ refs.form.addEventListener('submit', event => {
   }
 });
 
-function renderWithTimeout(data, currentPage) {
+export function renderWithTimeout(data, currentPage) {
   // timeout for spinner animation
   refs.spinnerLoader.classList.remove('not-visible');
 
@@ -67,9 +72,15 @@ function renderWithTimeout(data, currentPage) {
     if (fetchType === 'search') {
       paginatRef.removeEventListener('click', handlePagination);
       paginatRef.addEventListener('click', handleSearchPagination);
+
+      // rules for disabled arrows
+      makeDisabled();
     } else if (fetchType === 'start') {
       paginatRef.removeEventListener('click', handleSearchPagination);
       paginatRef.addEventListener('click', handlePagination);
+
+      // rules for disabled arrows
+      makeDisabled();
     }
 
     refs.spinnerLoader.classList.add('not-visible');
@@ -85,16 +96,19 @@ function handlePagination(event) {
     const targetNum = event.target.textContent;
 
     startFetch(targetNum).then(data => {
+      totalPages = data.total_pages;
       clearPage();
       renderWithTimeout(data, Number(targetNum));
     });
   } else if (event.target.classList.contains('arrow-left')) {
     startFetch(changeNumPage('minus', currentPageNum)).then(data => {
+      totalPages = data.total_pages;
       clearPage();
       renderWithTimeout(data, currentPageNum);
     });
   } else if (event.target.classList.contains('arrow-right')) {
     startFetch(changeNumPage('plus', currentPageNum)).then(data => {
+      totalPages = data.total_pages;
       clearPage();
       renderWithTimeout(data, currentPageNum);
     });
@@ -110,12 +124,14 @@ function handleSearchPagination(event) {
     const targetNum = event.target.textContent;
 
     searchFetch(inputValue, targetNum).then(data => {
+      totalPages = data.total_pages;
       clearPage();
       renderWithTimeout(data, Number(targetNum));
     });
   } else if (event.target.classList.contains('arrow-left')) {
     searchFetch(inputValue, changeNumPage('minus', currentPageNum)).then(
       data => {
+        totalPages = data.total_pages;
         fetchType = 'search';
         clearPage();
         renderWithTimeout(data, currentPageNum);
@@ -124,6 +140,7 @@ function handleSearchPagination(event) {
   } else if (event.target.classList.contains('arrow-right')) {
     searchFetch(inputValue, changeNumPage('plus', currentPageNum)).then(
       data => {
+        totalPages = data.total_pages;
         fetchType = 'search';
         clearPage();
         renderWithTimeout(data, currentPageNum);
@@ -134,10 +151,25 @@ function handleSearchPagination(event) {
 
 function changeNumPage(sign, num) {
   if (num === 1) {
+    console.log(num);
     return;
   } else if (sign === 'minus') {
+    console.log(num);
     return num;
   } else if (sign === 'plus') {
+    console.log(num);
     return num;
+  }
+}
+
+function makeDisabled() {
+  const currentPageNum = Number(document.querySelector('.current').textContent);
+
+  if (currentPageNum === 1) {
+    document.querySelector('.arrow-left').setAttribute('disabled', 'true');
+    console.log('disabled left');
+  } else if (currentPageNum === totalPages) {
+    console.log('disabled right');
+    document.querySelector('.arrow-right').setAttribute('disabled', 'true');
   }
 }
