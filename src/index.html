@@ -97,46 +97,48 @@
         </section>
 
         <main>
-          <section>
+          <section class="section-films">
             <div class="container">
               <h2 class="visually-hidden">Films list</h2>
 
-              <ul class="films-list"></ul>
+              <div class="wrapper-films">
+                <ul class="films-list"></ul>
 
-              <!-- spinner START -->
-              <div class="cssload-dots not-visible">
-                <div class="cssload-dot"></div>
-                <div class="cssload-dot"></div>
-                <div class="cssload-dot"></div>
-                <div class="cssload-dot"></div>
-                <div class="cssload-dot"></div>
+                <!-- spinner START -->
+                <div class="cssload-dots not-visible">
+                  <div class="cssload-dot"></div>
+                  <div class="cssload-dot"></div>
+                  <div class="cssload-dot"></div>
+                  <div class="cssload-dot"></div>
+                  <div class="cssload-dot"></div>
+                </div>
+
+                <svg
+                  class="spinner not-visible"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <defs>
+                    <filter id="goo">
+                      <fegaussianblur
+                        in="SourceGraphic"
+                        result="blur"
+                        stddeviation="12"
+                      ></fegaussianblur>
+                      <fecolormatrix
+                        in="blur"
+                        values="1 0 0 0 0	0 1 0 0 0	0 0 1 0 0	0 0 0 18 -7"
+                        result="goo"
+                      ></fecolormatrix>
+                    </filter>
+                  </defs>
+                </svg>
+                <!-- spinner END -->
+
+                <!-- <button id="next-btn" class="start-next-page">next</button> -->
+
+                <div id="pagination" class="pagination"></div>
               </div>
-
-              <svg
-                class="spinner not-visible"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <defs>
-                  <filter id="goo">
-                    <fegaussianblur
-                      in="SourceGraphic"
-                      result="blur"
-                      stddeviation="12"
-                    ></fegaussianblur>
-                    <fecolormatrix
-                      in="blur"
-                      values="1 0 0 0 0	0 1 0 0 0	0 0 1 0 0	0 0 0 18 -7"
-                      result="goo"
-                    ></fecolormatrix>
-                  </filter>
-                </defs>
-              </svg>
-              <!-- spinner END -->
-
-              <!-- <button id="next-btn" class="start-next-page">next</button> -->
-
-              <div id="pagination" class="pagination"></div>
             </div>
           </section>
         </main>

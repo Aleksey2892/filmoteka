@@ -36,7 +36,7 @@ refs.form.addEventListener('submit', event => {
 
     searchFetch(inputValue).then(data => {
       fetchType = 'search';
-      console.log(inputValue);
+
       if (data.results.length === 0) {
         document.querySelector('#pagination').classList.add('not-visible');
 
@@ -83,31 +83,22 @@ function handlePagination(event) {
 
   if (event.target.textContent !== '') {
     const targetNum = event.target.textContent;
-    document.querySelector('#pagination').classList.add('not-visible');
 
     startFetch(targetNum).then(data => {
       clearPage();
       renderWithTimeout(data, Number(targetNum));
     });
   } else if (event.target.classList.contains('arrow-left')) {
-    document.querySelector('#pagination').classList.add('not-visible');
-
     startFetch(changeNumPage('minus', currentPageNum)).then(data => {
       clearPage();
       renderWithTimeout(data, currentPageNum);
-      // console.log(data);
     });
   } else if (event.target.classList.contains('arrow-right')) {
-    document.querySelector('#pagination').classList.add('not-visible');
-
-    // console.log('kuku right');
     startFetch(changeNumPage('plus', currentPageNum)).then(data => {
       clearPage();
       renderWithTimeout(data, currentPageNum);
-      // console.log(data);
     });
   }
-  console.log('РАБОТАЕТ START');
 }
 
 function handleSearchPagination(event) {
@@ -117,12 +108,10 @@ function handleSearchPagination(event) {
 
   if (event.target.textContent !== '') {
     const targetNum = event.target.textContent;
-    document.querySelector('#pagination').classList.add('not-visible');
 
     searchFetch(inputValue, targetNum).then(data => {
       clearPage();
       renderWithTimeout(data, Number(targetNum));
-      console.log(data, 'search');
     });
   } else if (event.target.classList.contains('arrow-left')) {
     searchFetch(inputValue, changeNumPage('minus', currentPageNum)).then(
@@ -130,7 +119,6 @@ function handleSearchPagination(event) {
         fetchType = 'search';
         clearPage();
         renderWithTimeout(data, currentPageNum);
-        console.log(data, 'search');
       },
     );
   } else if (event.target.classList.contains('arrow-right')) {
@@ -139,15 +127,12 @@ function handleSearchPagination(event) {
         fetchType = 'search';
         clearPage();
         renderWithTimeout(data, currentPageNum);
-        console.log(data, 'search');
       },
     );
   }
-  console.log('РАБОТАЕТ SEARCH');
 }
 
 function changeNumPage(sign, num) {
-  console.log(num);
   if (num === 1) {
     return;
   } else if (sign === 'minus') {

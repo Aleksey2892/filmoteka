@@ -1,7 +1,12 @@
 .pagination {
+  position: absolute;
   display: flex;
   justify-content: center;
   border-radius: 4px;
+  bottom: 20px;
+
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .pag-number {
