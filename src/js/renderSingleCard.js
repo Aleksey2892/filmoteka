@@ -15,23 +15,35 @@ export function getLocal(key) {
 }
 
 function addToLocal() {
+  let user;
   const whoOnline = localStorage.getItem('isOnline');
 
   if (whoOnline === 'no one is online') {
     notification['info']('You are not registred', 'Info');
   } else {
     if (event.target.classList.contains('add_watched')) {
-      console.log('add_watched');
+      console.log('ты под логином. нажал на кнопку добавить');
 
       const localUsers = getLocal('users');
 
-      localUsers.find(user => {
-        if (user.userName === whoOnline) {
-          console.log('нашли', user.userName);
-
-          user.lib.watched.push(oneCardObj);
+      localUsers.find(el => {
+        if (el.userName === whoOnline) {
+          // user = el;
+          el.lib.watched.some(el => {
+            if (el.id !== oneCardObj.id) {
+              el.lib.watched.push(oneCardObj);
+            }
+          });
+          console.log(el.userName);
+          return true;
+        } else {
+          return false;
         }
       });
+
+      // console.log(user);
+      // if (haveUser) {
+      // }
 
       localStorage.setItem('users', JSON.stringify(localUsers));
     }

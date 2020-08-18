@@ -21,6 +21,7 @@ export let users = [
 // ];
 
 try {
+  localStorage.setItem('isOnline', 'no one is online');
   if (!localStorage.getItem('users')) {
     localStorage.setItem('users', JSON.stringify(users));
   } else {
