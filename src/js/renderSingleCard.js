@@ -26,24 +26,36 @@ function addToLocal() {
 
       const localUsers = getLocal('users');
 
-      localUsers.find(el => {
+      const userElement = localUsers.find(el => {
         if (el.userName === whoOnline) {
-          // user = el;
-          el.lib.watched.some(el => {
-            if (el.id !== oneCardObj.id) {
-              el.lib.watched.push(oneCardObj);
-            }
-          });
-          console.log(el.userName);
-          return true;
+          return el;
         } else {
           return false;
         }
       });
 
+      console.log(userElement);
+
+      if (userElement.lib.watched.length === 0) {
+        console.log('пусто и пушим первый элемент');
+
+        userElement.lib.watched.push(oneCardObj);
+      } else {
+        userElement.lib.watched.find(el => {
+          if (userElement.id === oneCardObj.id) {
+            console.log('есть такой');
+          } else {
+            console.log(userElement.lib.watched, 'нет такого, пушим');
+            userElement.lib.watched.push(oneCardObj);
+          }
+        });
+      }
+
       // console.log(user);
       // if (haveUser) {
       // }
+
+      console.log(localUsers);
 
       localStorage.setItem('users', JSON.stringify(localUsers));
     }
