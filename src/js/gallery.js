@@ -50,7 +50,7 @@ refs.form.addEventListener('submit', event => {
   }
 });
 
-function renderWithTimeout(data, currentPage) {
+export function renderWithTimeout(data, currentPage) {
   // timeout for spinner animation
   refs.spinnerLoader.classList.remove('not-visible');
 
@@ -98,7 +98,7 @@ function handlePagination(event) {
 }
 
 function changeNumPage(sign, num) {
-  console.log(num)
+  console.log(num);
   if (num === 1) {
     return;
   } else if (sign === 'minus') {
@@ -107,3 +107,5 @@ function changeNumPage(sign, num) {
     return num;
   }
 }
+
+export default { renderWithTimeout };

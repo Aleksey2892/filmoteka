@@ -29,6 +29,6 @@ export default function renderCard(filmsList) {
 
     return elem;
   });
-  console.log(customList);
+  // console.log(customList);
   refs.listFilms.insertAdjacentHTML('beforeend', tempCard(customList));
 }
