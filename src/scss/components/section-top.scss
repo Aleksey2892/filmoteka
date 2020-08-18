@@ -17,7 +17,25 @@
     background-size: cover;
   }
 }
+.section-top-details {
+  padding-top: 15px;
+  padding-bottom: 20px;
+  min-height: 230px;
+  background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56) 0%,
+      rgba(0, 0, 0, 0.56) 100%
+    ),
+    url(images/bg/bg-header-details.jpg);
+  background-position: right 84% bottom 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
 
+  @include desktop {
+    background-position: center;
+    background-size: cover;
+  }
+}
 .section-top-lib {
   background: linear-gradient(
       to right,
