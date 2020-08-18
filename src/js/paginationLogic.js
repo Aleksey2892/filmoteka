@@ -24,18 +24,18 @@ export default function paginationLogic(totalPage, currentPage = 1) {
     // add pages by number (from [s] to [f])
     Add: function (s, f) {
       for (var i = s; i < f; i++) {
-        Pagination.code += '<a>' + i + '</a>';
+        Pagination.code += '<button>' + i + '</button>';
       }
     },
 
     // add last page with separator
     Last: function () {
-      Pagination.code += '<i>...</i><a>' + Pagination.size + '</a>';
+      Pagination.code += '<i>...</i><button>' + Pagination.size + '</button>';
     },
 
     // add first page with separator
     First: function () {
-      Pagination.code += '<a>1</a><i>...</i>';
+      Pagination.code += '<button>1</button><i>...</i>';
     },
 
     // --------------------
@@ -73,7 +73,7 @@ export default function paginationLogic(totalPage, currentPage = 1) {
 
     // binding pages
     Bind: function () {
-      var a = Pagination.e.getElementsByTagName('a');
+      var a = Pagination.e.getElementsByTagName('button');
       for (var i = 0; i < a.length; i++) {
         if (+a[i].innerHTML === Pagination.page) a[i].className = 'current';
         a[i].addEventListener('click', Pagination.Click, false);
@@ -117,7 +117,7 @@ export default function paginationLogic(totalPage, currentPage = 1) {
 
     // binding buttons
     Buttons: function (e) {
-      var nav = e.getElementsByTagName('a');
+      var nav = e.getElementsByTagName('button');
       nav[0].addEventListener('click', Pagination.Prev, false);
       nav[1].addEventListener('click', Pagination.Next, false);
     },
@@ -125,9 +125,9 @@ export default function paginationLogic(totalPage, currentPage = 1) {
     // create skeleton
     Create: function (e) {
       var html = [
-        '<a id="prev-btn" class="start-prev-page arrow arrow-left"></a>', // previous button
+        '<button id="prev-btn" class="start-prev-page arrow arrow-left"></button>', // previous button
         '<span class="pag-number"></span>', // pagination container
-        '<a id="next-btn" class="start-next-page arrow arrow-right"></a>', // next button
+        '<button id="next-btn" class="start-next-page arrow arrow-right"></button>', // next button
       ];
 
       e.innerHTML = html.join('');
