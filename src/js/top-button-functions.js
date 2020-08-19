@@ -22,6 +22,23 @@ const openMyLibrary = () => {
   document.querySelector('#pagination').classList.add('not-visible');
   clearPage();
 
+  // const arrData = getLocal('users');
+  // const whoOnline = localStorage.getItem('isOnline');
+  // console.log(whoOnline);
+
+  // const dataUser = arrData.find(el => {
+  //   if (el.userName === whoOnline) {
+  //     return el;
+  //   }
+  // });
+
+  // console.log(dataUser.lib.watched);
+  // renderCard(dataUser.lib.watched);
+  testClickW();
+};
+
+function testClickW() {
+  clearPage();
   const arrData = getLocal('users');
   const whoOnline = localStorage.getItem('isOnline');
   console.log(whoOnline);
@@ -33,8 +50,9 @@ const openMyLibrary = () => {
   });
 
   console.log(dataUser.lib.watched);
+  // renderWithTimeout(dataUser.lib.watched);
   renderCard(dataUser.lib.watched);
-};
+}
 
 //// ===============================================================================
 
@@ -48,15 +66,6 @@ const closeMyLibrary = e => {
   refsButtons.linkLib.classList.remove('active-menu');
   refsButtons.linkHome.classList.add('active-menu');
 
-  // console.log(e.target);
-
-  // const test = document.querySelector('.films-list');
-
-  // console.log(test);
-  // if (refs.listFilms.textContent === '') {
-  //   console.log('пусто');
-  // }
-
   startFetch().then(data => {
     console.log(data);
     clearPage();
@@ -67,14 +76,34 @@ const closeMyLibrary = e => {
 };
 
 const openWatched = () => {
-  refs.myWatched.classList.add('active');
-  refs.myQueue.classList.remove('active');
+  refsButtons.myWatched.classList.add('active');
+  refsButtons.myQueue.classList.remove('active');
+
+  testClickW();
 };
 
 const openQueue = () => {
-  refs.myWatched.classList.remove('active');
-  refs.myQueue.classList.add('active');
+  refsButtons.myWatched.classList.remove('active');
+  refsButtons.myQueue.classList.add('active');
+
+  testClickQ();
 };
+
+function testClickQ() {
+  clearPage();
+  const arrData = getLocal('users');
+  const whoOnline = localStorage.getItem('isOnline');
+  console.log(whoOnline);
+
+  const dataUser = arrData.find(el => {
+    if (el.userName === whoOnline) {
+      return el;
+    }
+  });
+
+  console.log(dataUser.lib.queue);
+  renderCard(dataUser.lib.queue);
+}
 
 // function selectLib(event) {
 //   console.log('hi');
