@@ -8,6 +8,7 @@ import { users } from './defaultLoadLocal';
 import notification from 'toastr';
 import refsButton from './refs-buttons';
 import { addToWatched, addToQueue } from './functionsAddedToLib';
+import btnAddDicabled from './btnAddDicabled';
 
 export let oneCardObj = {};
 
@@ -30,6 +31,9 @@ function addToLocal() {
 refs.listFilms.addEventListener('click', event => {
   if (event.target.nodeName === 'IMG' || event.target.nodeName === 'H3') {
     cardFetch(event.target.dataset.id).then(obj => {
+      // забираем обьект
+      oneCardObj = obj;
+
       if (obj.poster_path === null) {
         obj.poster_path =
           'https://www.indulgemassager.com/assets/frontend/indulge/images/no-profile-pic.jpg';
@@ -45,8 +49,11 @@ refs.listFilms.addEventListener('click', event => {
       refs.pagination.classList.add('not-visible');
       refs.listFilms.insertAdjacentHTML('beforeend', onefilmCard(obj));
 
-      // забираем обьект
-      oneCardObj = obj;
+      // тут новый код
+      //---------------------------------------------------------------
+      btnAddDicabled();
+      //---------------------------------------------------------------
+      // тут новый когд кончился
 
       document
         .querySelector('.buttons__block')

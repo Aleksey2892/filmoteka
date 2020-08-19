@@ -1,5 +1,6 @@
 import notification from 'toastr';
-import { oneCardObj, getLocal } from './renderSingleCard';
+import { oneCardObj } from './renderSingleCard';
+import { addDisabledBtnWatched, addDisabledBtnQueue } from './addDisabledBtn';
 // ==================
 // watched
 // ==================
@@ -13,6 +14,9 @@ export function addToWatched(whoOnline, localUsers) {
 
     if (userElement.lib.watched.results.length === 0) {
       userElement.lib.watched.results.push(oneCardObj);
+
+      // console.log('fun in ckick watched: ', btnAddDicabled);
+      // btnAddDicabled();
 
       localStorage.setItem('users', JSON.stringify(localUsers));
 
@@ -28,6 +32,8 @@ export function addToWatched(whoOnline, localUsers) {
 
       if (!isFilm) {
         userElement.lib.watched.results.push(oneCardObj);
+
+        addDisabledBtnWatched();
 
         localStorage.setItem('users', JSON.stringify(localUsers));
 
@@ -67,6 +73,8 @@ export function addToQueue(whoOnline, localUsers) {
 
       if (!isFilm) {
         userElement.lib.queue.results.push(oneCardObj);
+
+        addDisabledBtnQueue();
 
         localStorage.setItem('users', JSON.stringify(localUsers));
 

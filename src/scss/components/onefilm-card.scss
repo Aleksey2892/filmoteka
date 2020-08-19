@@ -84,6 +84,7 @@
 
 .onefilm__btn {
   padding: 12px;
+  min-width: 120px;
   line-height: 16px;
   font-size: 12px;
   text-transform: uppercase;
@@ -92,11 +93,16 @@
   cursor: pointer;
   @include transition;
 
-  &:hover {
+  &:hover,
+  &:disabled {
     color: $main-white;
     background-color: #ff6b08;
     outline: none;
     border: 2px solid #ff6b08;
+  }
+
+  &:disabled {
+    cursor: default;
   }
 
   @include tablets {
