@@ -35,6 +35,7 @@ const openMyLibrary = () => {
   // console.log(dataUser.lib.watched);
   // renderCard(dataUser.lib.watched);
   testClickW();
+  document.querySelector('#pagination').classList.add('not-visible');
 };
 
 function testClickW() {
@@ -50,8 +51,11 @@ function testClickW() {
   });
 
   console.log(dataUser.lib.watched);
-  // renderWithTimeout(dataUser.lib.watched);
-  renderCard(dataUser.lib.watched);
+  renderWithTimeout(dataUser.lib.watched);
+  const paginatRef = document.querySelector('#pagination');
+
+  paginatRef.classList.remove('not-visible');
+  // renderCard(dataUser.lib.watched);
 }
 
 //// ===============================================================================
@@ -102,7 +106,8 @@ function testClickQ() {
   });
 
   console.log(dataUser.lib.queue);
-  renderCard(dataUser.lib.queue);
+  renderWithTimeout(dataUser.lib.queue);
+  // renderCard(dataUser.lib.queue);
 }
 
 // function selectLib(event) {

@@ -7,8 +7,8 @@ export let users = [
     userPass: 'admin',
     isOnline: false,
     lib: {
-      watched: [],
-      queue: [],
+      watched: { results: [] },
+      queue: { results: [] },
     },
   },
 ];

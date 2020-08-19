@@ -11,14 +11,14 @@ export function addToWatched(whoOnline, localUsers) {
       }
     });
 
-    if (userElement.lib.watched.length === 0) {
-      userElement.lib.watched.push(oneCardObj);
+    if (userElement.lib.watched.results.length === 0) {
+      userElement.lib.watched.results.push(oneCardObj);
 
       localStorage.setItem('users', JSON.stringify(localUsers));
 
       notification['success']('You added a movie to Watched', 'Great');
     } else {
-      const isFilm = userElement.lib.watched.find(el => {
+      const isFilm = userElement.lib.watched.results.find(el => {
         if (el.id === oneCardObj.id) {
           console.log('есть такой');
           notification['info']('This movie is on your list Watched', 'Info');
@@ -27,7 +27,7 @@ export function addToWatched(whoOnline, localUsers) {
       });
 
       if (!isFilm) {
-        userElement.lib.watched.push(oneCardObj);
+        userElement.lib.watched.results.push(oneCardObj);
 
         localStorage.setItem('users', JSON.stringify(localUsers));
 
@@ -50,14 +50,14 @@ export function addToQueue(whoOnline, localUsers) {
       }
     });
 
-    if (userElement.lib.queue.length === 0) {
-      userElement.lib.queue.push(oneCardObj);
+    if (userElement.lib.queue.results.length === 0) {
+      userElement.lib.queue.results.push(oneCardObj);
 
       localStorage.setItem('users', JSON.stringify(localUsers));
 
       notification['success']('You added a movie to Queue', 'Great');
     } else {
-      const isFilm = userElement.lib.queue.find(el => {
+      const isFilm = userElement.lib.queue.results.find(el => {
         if (el.id === oneCardObj.id) {
           console.log('есть такой');
           notification['info']('This movie is on your list Queue', 'Info');
@@ -66,7 +66,7 @@ export function addToQueue(whoOnline, localUsers) {
       });
 
       if (!isFilm) {
-        userElement.lib.queue.push(oneCardObj);
+        userElement.lib.queue.results.push(oneCardObj);
 
         localStorage.setItem('users', JSON.stringify(localUsers));
 

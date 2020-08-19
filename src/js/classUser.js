@@ -5,8 +5,8 @@ class User {
     this.userPass = userPass;
     this.isOnline = isOnline;
     this.lib = {
-      watched: [],
-      queue: [],
+      watched: { results: [] },
+      queue: { results: [] },
     };
   }
 }
