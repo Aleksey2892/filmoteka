@@ -55,13 +55,15 @@ export function addToWatched(whoOnline, localUsers) {
   }
 }
 
+//!
+
+//!
+
 // ==================
 // queue
 // ==================
 export function addToQueue(whoOnline, localUsers) {
   if (event.target.classList.contains('add_queue')) {
-    console.log('ты под логином. нажал на кнопку добавить');
-
     const userElement = localUsers.find(el => {
       if (el.userName === whoOnline) {
         return el;

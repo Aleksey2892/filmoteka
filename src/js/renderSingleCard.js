@@ -28,7 +28,34 @@ function addToLocal() {
   }
 }
 
-refs.listFilms.addEventListener('click', event => {
+refs.listFilms.addEventListener('click', testov);
+
+//! new
+function allLocalData() {
+  return {
+    whoOnline: localStorage.getItem('isOnline'),
+    localUsers: getLocal('users'),
+  };
+}
+//!
+function testov(event) {
+  // console.log('allData-----', allLocalData());
+
+  const allLocal = allLocalData();
+
+  const elUser = allLocal.localUsers.find(el => {
+    if (el.userName === allLocal.whoOnline) {
+      console.log('крестик функция нашла User-а');
+      return el;
+    }
+  });
+
+  console.log('крестик ЮсерЭлемент');
+
+  if (event.target.classList.contains('close-btn')) {
+    console.log('крестик');
+  }
+
   if (event.target.nodeName === 'IMG' || event.target.nodeName === 'H3') {
     cardFetch(event.target.dataset.id).then(obj => {
       // забираем обьект
@@ -61,4 +88,4 @@ refs.listFilms.addEventListener('click', event => {
         .addEventListener('click', addToLocal);
     });
   }
-});
+}
