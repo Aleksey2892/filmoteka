@@ -13,18 +13,39 @@ export function btnAddDicabledWatched() {
 
   const btnW = document.querySelector('.add_watched');
 
-  elUser.lib.watched.results.find(el => {
-    if (el.id === oneCardObj.id) {
-      console.log('изменить кнопку');
+  // //!
+  console.log(whoOnline);
+  if (whoOnline === 'no one is online') {
+    console.log('ДА, никого нет онлайн');
+    return;
+  } else {
+    elUser.lib.watched.results.find(el => {
+      if (el.id === oneCardObj.id) {
+        console.log('изменить кнопку');
 
-      btnW.classList.add('active');
-      btnW.setAttribute('disabled', true);
+        btnW.classList.add('active');
+        btnW.setAttribute('disabled', true);
+      }
+    });
+
+    if (btnW.getAttribute('disabled')) {
+      btnW.textContent = 'Added in Watched';
     }
-  });
-
-  if (btnW.getAttribute('disabled')) {
-    btnW.textContent = 'Added in Watched';
   }
+  // //!
+
+  // elUser.lib.watched.results.find(el => {
+  //   if (el.id === oneCardObj.id) {
+  //     console.log('изменить кнопку');
+
+  //     btnW.classList.add('active');
+  //     btnW.setAttribute('disabled', true);
+  //   }
+  // });
+
+  // if (btnW.getAttribute('disabled')) {
+  //   btnW.textContent = 'Added in Watched';
+  // }
 }
 
 export function btnAddDicabledQueue() {
@@ -40,18 +61,39 @@ export function btnAddDicabledQueue() {
 
   const btnW = document.querySelector('.add_queue');
 
-  elUser.lib.queue.results.find(el => {
-    if (el.id === oneCardObj.id) {
-      console.log('изменить кнопку');
+  // //!
+  console.log(whoOnline);
+  if (whoOnline === 'no one is online') {
+    console.log('ДА, никого нет онлайн');
+    return;
+  } else {
+    elUser.lib.queue.results.find(el => {
+      if (el.id === oneCardObj.id) {
+        console.log('изменить кнопку');
 
-      btnW.classList.add('active');
-      btnW.setAttribute('disabled', true);
+        btnW.classList.add('active');
+        btnW.setAttribute('disabled', true);
+      }
+    });
+
+    if (btnW.getAttribute('disabled')) {
+      btnW.textContent = 'Added in Queue';
     }
-  });
-
-  if (btnW.getAttribute('disabled')) {
-    btnW.textContent = 'Added in Queue';
   }
+  // //!
+
+  // elUser.lib.queue.results.find(el => {
+  //   if (el.id === oneCardObj.id) {
+  //     console.log('изменить кнопку');
+
+  //     btnW.classList.add('active');
+  //     btnW.setAttribute('disabled', true);
+  //   }
+  // });
+
+  // if (btnW.getAttribute('disabled')) {
+  //   btnW.textContent = 'Added in Queue';
+  // }
 }
 
 // -------------------------------- added now

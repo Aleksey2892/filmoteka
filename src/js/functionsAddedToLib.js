@@ -6,6 +6,10 @@ import {
   addNowWatched,
   addNowQueue,
 } from './btnAddDicabled';
+import {
+  checksAnotherArrForWatched,
+  checksAnotherArrForQueue,
+} from './checksAnotherArr';
 // ==================
 // watched
 // ==================
@@ -17,12 +21,13 @@ export function addToWatched(whoOnline, localUsers) {
       }
     });
 
+    checksAnotherArrForWatched(userElement, oneCardObj, localUsers);
+
     if (userElement.lib.watched.results.length === 0) {
       userElement.lib.watched.results.push(oneCardObj);
 
-      // console.log('fun in ckick watched: ', btnAddDicabled);
-      // btnAddDicabled();
       btnAddDicabledWatched();
+      addNowWatched();
 
       localStorage.setItem('users', JSON.stringify(localUsers));
 
@@ -63,10 +68,13 @@ export function addToQueue(whoOnline, localUsers) {
       }
     });
 
+    checksAnotherArrForQueue(userElement, oneCardObj, localUsers);
+
     if (userElement.lib.queue.results.length === 0) {
       userElement.lib.queue.results.push(oneCardObj);
 
       btnAddDicabledQueue();
+      addNowQueue();
 
       localStorage.setItem('users', JSON.stringify(localUsers));
 
