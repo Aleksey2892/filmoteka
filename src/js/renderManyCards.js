@@ -24,9 +24,13 @@ export default function renderCard(filmsList) {
     } else {
       // new rules for single card render
       if (elem.genre_ids) {
-        elem.genre_ids = getGenreNames(elem.genre_ids).join(', ');
+        elem.genre_ids = getGenreNames(elem.genre_ids).join(' ');
       } else if (elem.genres) {
-        const genresArr = elem.genres.map(el => el.name);
+        // const genresArr =
+        elem.genre_ids = elem.genres.map(el => el.name).join(' ');
+        console.log(elem.genres.map(el => el.name));
+        // console.log(genresArr);
+        // return genresArr;
       }
     }
 
