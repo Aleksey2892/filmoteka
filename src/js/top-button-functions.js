@@ -22,27 +22,30 @@ const openMyLibrary = () => {
   document.querySelector('#pagination').classList.add('not-visible');
   clearPage();
 
-  // const arrData = getLocal('users');
-  // const whoOnline = localStorage.getItem('isOnline');
-  // console.log(whoOnline);
-
-  // const dataUser = arrData.find(el => {
-  //   if (el.userName === whoOnline) {
-  //     return el;
-  //   }
-  // });
-
-  // console.log(dataUser.lib.watched);
-  // renderCard(dataUser.lib.watched);
+  //! loading Watched default on click My-Library
   testClickW();
-  document.querySelector('#pagination').classList.add('not-visible');
 };
 
-function testClickW() {
-  clearPage();
+//// ===============================================================================
+
+//! added visible close btn ( for film-card)
+//! added not-visible pagination in My-Library
+function classAddRemove() {
+  setTimeout(() => {
+    if (document.querySelector('.close-btn')) {
+      document.querySelector('.close-btn').classList.remove('not-visible');
+    }
+
+    document.querySelector('#pagination').classList.add('not-visible');
+  }, 1005);
+}
+
+//// ===============================================================================
+
+//! get User element
+function getObjOnlineUser() {
   const arrData = getLocal('users');
   const whoOnline = localStorage.getItem('isOnline');
-  console.log(whoOnline);
 
   const dataUser = arrData.find(el => {
     if (el.userName === whoOnline) {
@@ -50,14 +53,28 @@ function testClickW() {
     }
   });
 
-  console.log(dataUser.lib.watched);
-  renderWithTimeout(dataUser.lib.watched);
-  const paginatRef = document.querySelector('#pagination');
+  return dataUser;
+}
+//!
 
-  paginatRef.classList.remove('not-visible');
-  // renderCard(dataUser.lib.watched);
+//// ===============================================================================
+//! render Watched
+function testClickW() {
+  clearPage();
+
+  const dataUser = getObjOnlineUser();
+  renderWithTimeout(dataUser.lib.watched);
+  classAddRemove();
 }
 
+//! render Queue
+function testClickQ() {
+  clearPage();
+
+  const dataUser = getObjOnlineUser();
+  renderWithTimeout(dataUser.lib.queue);
+  classAddRemove();
+}
 //// ===============================================================================
 
 const closeMyLibrary = e => {
@@ -70,6 +87,7 @@ const closeMyLibrary = e => {
   refsButtons.linkLib.classList.remove('active-menu');
   refsButtons.linkHome.classList.add('active-menu');
 
+  //! render on click btn HOME
   startFetch().then(data => {
     console.log(data);
     clearPage();
@@ -92,28 +110,5 @@ const openQueue = () => {
 
   testClickQ();
 };
-
-function testClickQ() {
-  clearPage();
-  const arrData = getLocal('users');
-  const whoOnline = localStorage.getItem('isOnline');
-  console.log(whoOnline);
-
-  const dataUser = arrData.find(el => {
-    if (el.userName === whoOnline) {
-      return el;
-    }
-  });
-
-  console.log(dataUser.lib.queue);
-  renderWithTimeout(dataUser.lib.queue);
-  // renderCard(dataUser.lib.queue);
-}
-
-// function selectLib(event) {
-//   console.log('hi');
-//   console.log(event.target);
-
-// }
 
 export default { openMyLibrary, closeMyLibrary, openWatched, openQueue };

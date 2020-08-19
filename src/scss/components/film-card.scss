@@ -1,8 +1,9 @@
 .film-card {
+  position: relative;
   width: 280px;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -12,7 +13,7 @@
   cursor: pointer;
 
   &:not(:last-child) {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   &:hover {
