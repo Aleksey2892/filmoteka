@@ -1,6 +1,11 @@
 import notification from 'toastr';
 import { oneCardObj } from './renderSingleCard';
-import { addDisabledBtnWatched, addDisabledBtnQueue } from './addDisabledBtn';
+import {
+  btnAddDicabledWatched,
+  btnAddDicabledQueue,
+  addNowWatched,
+  addNowQueue,
+} from './btnAddDicabled';
 // ==================
 // watched
 // ==================
@@ -17,6 +22,7 @@ export function addToWatched(whoOnline, localUsers) {
 
       // console.log('fun in ckick watched: ', btnAddDicabled);
       // btnAddDicabled();
+      btnAddDicabledWatched();
 
       localStorage.setItem('users', JSON.stringify(localUsers));
 
@@ -33,7 +39,8 @@ export function addToWatched(whoOnline, localUsers) {
       if (!isFilm) {
         userElement.lib.watched.results.push(oneCardObj);
 
-        addDisabledBtnWatched();
+        btnAddDicabledWatched();
+        addNowWatched();
 
         localStorage.setItem('users', JSON.stringify(localUsers));
 
@@ -59,6 +66,8 @@ export function addToQueue(whoOnline, localUsers) {
     if (userElement.lib.queue.results.length === 0) {
       userElement.lib.queue.results.push(oneCardObj);
 
+      btnAddDicabledQueue();
+
       localStorage.setItem('users', JSON.stringify(localUsers));
 
       notification['success']('You added a movie to Queue', 'Great');
@@ -74,7 +83,8 @@ export function addToQueue(whoOnline, localUsers) {
       if (!isFilm) {
         userElement.lib.queue.results.push(oneCardObj);
 
-        addDisabledBtnQueue();
+        btnAddDicabledQueue();
+        addNowQueue();
 
         localStorage.setItem('users', JSON.stringify(localUsers));
 

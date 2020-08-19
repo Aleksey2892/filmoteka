@@ -8,7 +8,7 @@ import { users } from './defaultLoadLocal';
 import notification from 'toastr';
 import refsButton from './refs-buttons';
 import { addToWatched, addToQueue } from './functionsAddedToLib';
-import btnAddDicabled from './btnAddDicabled';
+import { btnAddDicabledWatched, btnAddDicabledQueue } from './btnAddDicabled';
 
 export let oneCardObj = {};
 
@@ -51,8 +51,8 @@ refs.listFilms.addEventListener('click', event => {
 
       // тут новый код
       //-------------------------------------------------------------
-
-      btnAddDicabled();
+      btnAddDicabledWatched();
+      btnAddDicabledQueue();
       //---------------------------------------------------------------
       // тут новый когд кончился
 

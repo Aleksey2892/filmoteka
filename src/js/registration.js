@@ -20,7 +20,7 @@ export default function registration(event) {
     if (elem.userName === userName) {
       console.log('есть пользователь');
 
-      notification['error']('Come up with another name', 'This name is used');
+      notification['info']('Come up with another name', 'This name is used');
 
       haveUser = elem.userName === userName;
       return haveUser;
