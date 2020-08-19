@@ -7,14 +7,13 @@ import dataFromLocal from './dataFromLocal';
 import { users } from './defaultLoadLocal';
 import notification from 'toastr';
 import refsButton from './refs-buttons';
+import { addToWatched, addToQueue } from './functionsAddedToLib';
 
-let oneCardObj = {};
+export let oneCardObj = {};
 
 export function getLocal(key) {
   return JSON.parse(localStorage.getItem(key));
 }
-
-function twoBtns(classNameBtn) {}
 
 function addToLocal() {
   const whoOnline = localStorage.getItem('isOnline');
@@ -23,74 +22,8 @@ function addToLocal() {
   if (whoOnline === 'no one is online') {
     notification['info']('You are not registred', 'Info');
   } else {
-    // ========================================================= watched
-    if (event.target.classList.contains('add_watched')) {
-      const userElement = localUsers.find(el => {
-        if (el.userName === whoOnline) {
-          return el;
-        }
-      });
-
-      if (userElement.lib.watched.length === 0) {
-        userElement.lib.watched.push(oneCardObj);
-
-        localStorage.setItem('users', JSON.stringify(localUsers));
-
-        notification['success']('You added a movie to Watched', 'Great');
-        // notification['error']('Wrong login or password', 'Error');
-      } else {
-        const isFilm = userElement.lib.watched.find(el => {
-          if (el.id === oneCardObj.id) {
-            console.log('есть такой');
-            notification['info']('This movie is on your list Watched', 'Info');
-            return true;
-          }
-        });
-
-        if (!isFilm) {
-          userElement.lib.watched.push(oneCardObj);
-
-          localStorage.setItem('users', JSON.stringify(localUsers));
-
-          notification['success']('Great', 'You added a movie to Watched');
-        }
-      }
-    }
-
-    // ========================================================= queue
-    if (event.target.classList.contains('add_queue')) {
-      console.log('ты под логином. нажал на кнопку добавить');
-
-      const userElement = localUsers.find(el => {
-        if (el.userName === whoOnline) {
-          return el;
-        }
-      });
-
-      if (userElement.lib.queue.length === 0) {
-        userElement.lib.queue.push(oneCardObj);
-
-        localStorage.setItem('users', JSON.stringify(localUsers));
-
-        notification['success']('You added a movie to Queue', 'Great');
-      } else {
-        const isFilm = userElement.lib.queue.find(el => {
-          if (el.id === oneCardObj.id) {
-            console.log('есть такой');
-            notification['info']('This movie is on your list Queue', 'Info');
-            return true;
-          }
-        });
-
-        if (!isFilm) {
-          userElement.lib.queue.push(oneCardObj);
-
-          localStorage.setItem('users', JSON.stringify(localUsers));
-
-          notification['success']('Great', 'You added a movie to Queue');
-        }
-      }
-    }
+    addToWatched(whoOnline, localUsers);
+    addToQueue(whoOnline, localUsers);
   }
 }
 
