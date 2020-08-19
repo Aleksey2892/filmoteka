@@ -30,7 +30,12 @@
   }
 
   @include desktop {
+    margin-right: 16px;
     width: 207px;
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
   }
 }
 
