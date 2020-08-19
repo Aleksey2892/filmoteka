@@ -33,7 +33,13 @@ const openMyLibrary = () => {
 function classAddRemove() {
   setTimeout(() => {
     if (document.querySelector('.close-btn')) {
-      document.querySelector('.close-btn').classList.remove('not-visible');
+      const allCloseBtnArr = document.querySelectorAll('.close-btn');
+
+      allCloseBtnArr.forEach(el => {
+        el.classList.remove('not-visible');
+      });
+
+      console.log(allCloseBtnArr);
     }
 
     document.querySelector('#pagination').classList.add('not-visible');
