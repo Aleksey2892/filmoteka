@@ -34,30 +34,26 @@ function addToLocal() {
         }
       });
 
-      console.log(userElement);
-
       if (userElement.lib.watched.length === 0) {
         console.log('пусто и пушим первый элемент');
 
         userElement.lib.watched.push(oneCardObj);
+
+        localStorage.setItem('users', JSON.stringify(localUsers));
       } else {
-        userElement.lib.watched.find(el => {
-          if (userElement.id === oneCardObj.id) {
+        const isFilm = userElement.lib.watched.find(el => {
+          if (el.id === oneCardObj.id) {
             console.log('есть такой');
-          } else {
-            console.log(userElement.lib.watched, 'нет такого, пушим');
-            userElement.lib.watched.push(oneCardObj);
+            return true;
           }
         });
+
+        if (!isFilm) {
+          userElement.lib.watched.push(oneCardObj);
+
+          localStorage.setItem('users', JSON.stringify(localUsers));
+        }
       }
-
-      // console.log(user);
-      // if (haveUser) {
-      // }
-
-      console.log(localUsers);
-
-      localStorage.setItem('users', JSON.stringify(localUsers));
     }
 
     if (event.target.classList.contains('add_queue')) {

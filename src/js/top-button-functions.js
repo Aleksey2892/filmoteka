@@ -39,14 +39,14 @@ const openMyLibrary = () => {
 //// ===============================================================================
 
 const closeMyLibrary = e => {
-  refs.searchBox.classList.remove('visually-hidden');
-  refs.myWatched.classList.add('visually-hidden');
-  refs.myQueue.classList.add('visually-hidden');
-  refs.homeBg.classList.remove('section-top-lib');
-  refs.myWatched.classList.remove('active');
-  refs.myQueue.classList.remove('active');
-  refs.linkLib.classList.remove('active-menu');
-  refs.linkHome.classList.add('active-menu');
+  refsButtons.searchBox.classList.remove('visually-hidden');
+  refsButtons.myWatched.classList.add('visually-hidden');
+  refsButtons.myQueue.classList.add('visually-hidden');
+  refsButtons.homeBg.classList.remove('section-top-lib');
+  refsButtons.myWatched.classList.remove('active');
+  refsButtons.myQueue.classList.remove('active');
+  refsButtons.linkLib.classList.remove('active-menu');
+  refsButtons.linkHome.classList.add('active-menu');
 
   // console.log(e.target);
 

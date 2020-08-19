@@ -21,16 +21,18 @@ export let users = [
 // ];
 
 try {
-  // localStorage.setItem('isOnline', 'no one is online');
+  localStorage.setItem('isOnline', 'no one is online');
+
   if (!localStorage.getItem('users')) {
     localStorage.setItem('users', JSON.stringify(users));
   } else {
     users = [...JSON.parse(localStorage.getItem('users'))];
 
-    users.find(el => {
+    users.forEach(el => {
       if (el.isOnline === true) {
-        const userName = localStorage.getItem('isOnline');
-        addOnlineUser(userName);
+        el.userName;
+        localStorage.setItem('isOnline', el.userName);
+        addOnlineUser(el.userName);
       }
     });
   }
