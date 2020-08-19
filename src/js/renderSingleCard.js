@@ -57,35 +57,38 @@ function testov(event) {
   }
 
   if (event.target.nodeName === 'IMG' || event.target.nodeName === 'H3') {
-    cardFetch(event.target.dataset.id).then(obj => {
-      // забираем обьект
-      oneCardObj = obj;
+    if (event.target.dataset.id !== undefined) {
+      cardFetch(event.target.dataset.id).then(obj => {
+        // забираем обьект
+        oneCardObj = obj;
 
-      if (obj.poster_path === null) {
-        obj.poster_path =
-          'https://www.indulgemassager.com/assets/frontend/indulge/images/no-profile-pic.jpg';
-      } else {
-        obj.poster_path = `https://image.tmdb.org/t/p/w500${obj.poster_path}`;
-      }
+        if (obj.poster_path === null) {
+          obj.poster_path =
+            'https://www.indulgemassager.com/assets/frontend/indulge/images/no-profile-pic.jpg';
+        } else {
+          obj.poster_path = `https://image.tmdb.org/t/p/w500${obj.poster_path}`;
+        }
 
-      clearPage();
+        clearPage();
 
-      refsButton.homeBg.classList.remove('section-top');
-      refsButton.homeBg.classList.add('section-top-details');
+        refsButton.homeBg.classList.remove('section-top-lib');
+        refsButton.homeBg.classList.remove('section-top');
+        refsButton.homeBg.classList.add('section-top-details');
 
-      refs.pagination.classList.add('not-visible');
-      refs.listFilms.insertAdjacentHTML('beforeend', onefilmCard(obj));
+        refs.pagination.classList.add('not-visible');
+        refs.listFilms.insertAdjacentHTML('beforeend', onefilmCard(obj));
 
-      // тут новый код
-      //-------------------------------------------------------------
-      btnAddDicabledWatched();
-      btnAddDicabledQueue();
-      //---------------------------------------------------------------
-      // тут новый когд кончился
+        // тут новый код
+        //-------------------------------------------------------------
+        btnAddDicabledWatched();
+        btnAddDicabledQueue();
+        //---------------------------------------------------------------
+        // тут новый когд кончился
 
-      document
-        .querySelector('.buttons__block')
-        .addEventListener('click', addToLocal);
-    });
+        document
+          .querySelector('.buttons__block')
+          .addEventListener('click', addToLocal);
+      });
+    }
   }
 }

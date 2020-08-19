@@ -10,4 +10,5 @@ export default {
   error: document.querySelector('.error-search'),
   linkLib: document.querySelector('.library-button a'),
   linkHome: document.querySelector('.home a'),
+  sectionBg: document.querySelector('.head-background'),
 };

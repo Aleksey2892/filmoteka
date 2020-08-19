@@ -2,10 +2,11 @@ import refsButtons from './refs-buttons.js';
 import clearPage from './clearPage';
 import startFetch from './startFetch';
 import { renderWithTimeout } from './gallery';
-import refs from './refs';
 import { getLocal } from './renderSingleCard';
-import renderCard from './renderManyCards';
-import tempCard from '../templates/tempCard.hbs';
+import refs from './refs.js';
+// import refs from './refs';
+// import renderCard from './renderManyCards';
+// import tempCard from '../templates/tempCard.hbs';
 
 const openMyLibrary = () => {
   refsButtons.searchBox.classList.add('visually-hidden');
@@ -67,6 +68,9 @@ function getObjOnlineUser() {
 //! render Watched
 function testClickW() {
   clearPage();
+  refsButtons.homeBg.classList.add('section-top-lib');
+  refsButtons.homeBg.classList.add('section-top');
+  refsButtons.homeBg.classList.remove('section-top-details');
 
   const dataUser = getObjOnlineUser();
   renderWithTimeout(dataUser.lib.watched);
@@ -76,6 +80,9 @@ function testClickW() {
 //! render Queue
 function testClickQ() {
   clearPage();
+  refsButtons.homeBg.classList.add('section-top-lib');
+  refsButtons.homeBg.classList.add('section-top');
+  refsButtons.homeBg.classList.remove('section-top-details');
 
   const dataUser = getObjOnlineUser();
   renderWithTimeout(dataUser.lib.queue);
@@ -84,6 +91,8 @@ function testClickQ() {
 //// ===============================================================================
 
 const closeMyLibrary = e => {
+  refsButtons.homeBg.classList.remove('section-top-details');
+  refsButtons.sectionBg.classList.add('section-top');
   refsButtons.searchBox.classList.remove('visually-hidden');
   refsButtons.myWatched.classList.add('visually-hidden');
   refsButtons.myQueue.classList.add('visually-hidden');

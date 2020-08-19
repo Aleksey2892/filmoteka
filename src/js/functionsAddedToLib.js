@@ -36,7 +36,7 @@ export function addToWatched(whoOnline, localUsers) {
       const isFilm = userElement.lib.watched.results.find(el => {
         if (el.id === oneCardObj.id) {
           console.log('есть такой');
-          notification['info']('This movie is on your list Watched', 'Info');
+          // notification['info']('This movie is on your list Watched', 'Info');
           return true;
         }
       });
@@ -85,7 +85,7 @@ export function addToQueue(whoOnline, localUsers) {
       const isFilm = userElement.lib.queue.results.find(el => {
         if (el.id === oneCardObj.id) {
           console.log('есть такой');
-          notification['info']('This movie is on your list Queue', 'Info');
+          // notification['info']('This movie is on your list Queue', 'Info');
           return true;
         }
       });
