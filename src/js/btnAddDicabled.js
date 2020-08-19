@@ -1,7 +1,7 @@
 import { oneCardObj, getLocal } from './renderSingleCard';
 
 export default function btnAddDicabled() {
-  const whoOnline = String(getLocal('isOnline'));
+  const whoOnline = localStorage.getItem('isOnline');
   const allUsers = getLocal('users');
 
   const elUser = allUsers.find(el => {
