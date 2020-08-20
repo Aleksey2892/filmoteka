@@ -1,10 +1,10 @@
 import refs from './refs';
 import cardFetch from './oneCardFetch';
 import onefilmCard from '../templates/onefilmCard.hbs';
-import tempCard from '../templates/tempCard.hbs';
+import allLocalData from './allLocalData';
 import clearPage from './clearPage';
-import dataFromLocal from './dataFromLocal';
-import { users } from './defaultLoadLocal';
+// import getLocal from './getLocal';
+import removeFilm from './removeFilm';
 import notification from 'toastr';
 import refsButton from './refs-buttons';
 import { addToWatched, addToQueue } from './functionsAddedToLib';
@@ -12,49 +12,23 @@ import { btnAddDicabledWatched, btnAddDicabledQueue } from './btnAddDicabled';
 
 export let oneCardObj = {};
 
-export function getLocal(key) {
-  return JSON.parse(localStorage.getItem(key));
-}
-
 function addToLocal() {
-  const whoOnline = localStorage.getItem('isOnline');
-  const localUsers = getLocal('users');
+  const allData = allLocalData();
 
-  if (whoOnline === 'no one is online') {
+  console.log(allData.whoOnline);
+
+  if (allData.whoOnline === 'no one is online') {
     notification['info']('You are not registred', 'Info');
   } else {
-    addToWatched(whoOnline, localUsers);
-    addToQueue(whoOnline, localUsers);
+    addToWatched(allData.whoOnline, allData.localUsers);
+    addToQueue(allData.whoOnline, allData.localUsers);
   }
 }
 
 refs.listFilms.addEventListener('click', testov);
 
-//! new
-function allLocalData() {
-  return {
-    whoOnline: localStorage.getItem('isOnline'),
-    localUsers: getLocal('users'),
-  };
-}
-//!
 function testov(event) {
-  // console.log('allData-----', allLocalData());
-
-  const allLocal = allLocalData();
-
-  const elUser = allLocal.localUsers.find(el => {
-    if (el.userName === allLocal.whoOnline) {
-      console.log('крестик функция нашла User-а');
-      return el;
-    }
-  });
-
-  console.log('крестик ЮсерЭлемент');
-
-  if (event.target.classList.contains('close-btn')) {
-    console.log('крестик');
-  }
+  removeFilm(event);
 
   if (event.target.nodeName === 'IMG' || event.target.nodeName === 'H3') {
     if (event.target.dataset.id !== undefined) {

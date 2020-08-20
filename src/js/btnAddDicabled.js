@@ -1,4 +1,5 @@
-import { oneCardObj, getLocal } from './renderSingleCard';
+import { oneCardObj } from './renderSingleCard';
+import getLocal from './getLocal';
 
 export function btnAddDicabledWatched() {
   const whoOnline = localStorage.getItem('isOnline');

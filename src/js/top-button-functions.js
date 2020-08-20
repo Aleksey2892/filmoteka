@@ -2,7 +2,7 @@ import refsButtons from './refs-buttons.js';
 import clearPage from './clearPage';
 import startFetch from './startFetch';
 import renderWithTimeout from './renderWithTimeout';
-import { getLocal } from './renderSingleCard';
+import getLocal from './getLocal';
 import refs from './refs.js';
 
 const openMyLibrary = () => {
