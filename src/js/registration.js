@@ -18,8 +18,6 @@ export default function registration(event) {
 
   localStorageData.find(elem => {
     if (elem.userName === userName) {
-      console.log('есть пользователь');
-
       notification['info']('Come up with another name', 'This name is used');
 
       haveUser = elem.userName === userName;

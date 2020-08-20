@@ -16,8 +16,6 @@ export default function logIn() {
       el.isOnline = true;
 
       localStorage.setItem('users', JSON.stringify(localStorageData));
-
-      console.log('ку-ку епта, ты зашел!!!');
       localStorage.setItem('isOnline', userName);
 
       notification['success']('You entered', `Hello, ${userName}`);
@@ -28,8 +26,6 @@ export default function logIn() {
 
       return true;
     }
-
-    // localStorage.setItem('isOnline', userName);
 
     return false;
   });

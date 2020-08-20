@@ -1,11 +1,10 @@
 import refsButtons from './refs-buttons.js';
 import clearPage from './clearPage';
-import startFetch from './startFetch';
+import { startFetch } from './startFetch';
 import renderWithTimeout from './renderWithTimeout';
 import getLocal from './getLocal';
-import refs from './refs.js';
 
-const openMyLibrary = () => {
+function openMyLibrary() {
   refsButtons.searchBox.classList.add('visually-hidden');
   refsButtons.error.classList.remove('error-visible');
   refsButtons.myWatched.classList.remove('visually-hidden');
@@ -16,15 +15,13 @@ const openMyLibrary = () => {
   refsButtons.linkHome.classList.remove('active-menu');
   refsButtons.linkLib.classList.add('active-menu');
 
-  // очистит UL и скрывает пагинацию при нажатии на my library
+  // clear for UL and hidden pagination on click on my library
   document.querySelector('#pagination').classList.add('not-visible');
   clearPage();
 
   //! loading Watched default on click My-Library
-  testClickW();
-};
-
-//// ===============================================================================
+  ClickW();
+}
 
 //! added visible close btn ( for film-card)
 //! added not-visible pagination in My-Library
@@ -36,15 +33,11 @@ function classAddRemove() {
       allCloseBtnArr.forEach(el => {
         el.classList.remove('not-visible');
       });
-
-      console.log(allCloseBtnArr);
     }
 
     document.querySelector('#pagination').classList.add('not-visible');
   }, 1005);
 }
-
-//// ===============================================================================
 
 //! get User element
 function getObjOnlineUser() {
@@ -59,11 +52,9 @@ function getObjOnlineUser() {
 
   return dataUser;
 }
-//!
 
-//// ===============================================================================
 //! render Watched
-function testClickW() {
+function ClickW() {
   clearPage();
   refsButtons.homeBg.classList.add('section-top-lib');
   refsButtons.homeBg.classList.add('section-top');
@@ -75,7 +66,7 @@ function testClickW() {
 }
 
 //! render Queue
-function testClickQ() {
+function ClickQ() {
   clearPage();
   refsButtons.homeBg.classList.add('section-top-lib');
   refsButtons.homeBg.classList.add('section-top');
@@ -85,9 +76,8 @@ function testClickQ() {
   renderWithTimeout(dataUser.lib.queue);
   classAddRemove();
 }
-//// ===============================================================================
 
-const closeMyLibrary = e => {
+function closeMyLibrary(e) {
   refsButtons.homeBg.classList.remove('section-top-details');
   refsButtons.sectionBg.classList.add('section-top');
   refsButtons.searchBox.classList.remove('visually-hidden');
@@ -101,26 +91,25 @@ const closeMyLibrary = e => {
 
   //! render on click btn HOME
   startFetch().then(data => {
-    console.log(data);
     clearPage();
     renderWithTimeout(data);
 
     document.querySelector('#pagination').classList.remove('not-visible');
   });
-};
+}
 
-const openWatched = () => {
+function openWatched() {
   refsButtons.myWatched.classList.add('active');
   refsButtons.myQueue.classList.remove('active');
 
-  testClickW();
-};
+  ClickW();
+}
 
-const openQueue = () => {
+function openQueue() {
   refsButtons.myWatched.classList.remove('active');
   refsButtons.myQueue.classList.add('active');
 
-  testClickQ();
-};
+  ClickQ();
+}
 
 export default { openMyLibrary, closeMyLibrary, openWatched, openQueue };

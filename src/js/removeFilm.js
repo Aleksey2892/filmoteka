@@ -11,7 +11,6 @@ export default function removeFilm(event) {
     });
 
     const xId = event.target.dataset.id;
-    console.log(xId);
 
     const deleteElWatched = elUser.lib.watched.results.find(el => {
       if (String(el.id) === xId) {

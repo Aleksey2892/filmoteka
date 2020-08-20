@@ -1,5 +1,3 @@
-import refs from './refs';
-
 export default function paginationLogic(totalPage, currentPage = 1) {
   /* * * * * * * * * * * * * * * * *
    * Pagination

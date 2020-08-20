@@ -1,5 +1,5 @@
 import { searchFetch } from './searchFetch';
-import startFetch from './startFetch';
+import { startFetch } from './startFetch';
 import clearPage from './clearPage';
 
 import fetchSettings from './fetchSettings';

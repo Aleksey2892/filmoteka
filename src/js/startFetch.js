@@ -2,9 +2,9 @@ import axios from 'axios';
 // import { pageNumber } from './searchFetch';
 import refs from './refs';
 
-const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
+export const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
 
-export default function startFetch(pageNumber = 1) {
+export function startFetch(pageNumber = 1) {
   refs.spinnerLoader.classList.remove('not-visible');
 
   return axios(

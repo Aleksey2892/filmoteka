@@ -17,7 +17,7 @@ document.querySelector('.btn-reg').onclick = () => {
         type="text"
         placeholder="Enter your name..."
         required
-        autofocus
+
       />
       <input
         class="login-block__password"
@@ -60,7 +60,7 @@ document.querySelector('.btn-login').onclick = () => {
         type="text"
         placeholder="Enter your name..."
         required
-        autofocus
+        
       />
       <input
         class="login-block__password"

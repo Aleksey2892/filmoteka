@@ -1,5 +1,5 @@
 import refs from './refs';
-import startFetch from './startFetch';
+import { startFetch } from './startFetch';
 import gallerySearch from './gallerySearch';
 import fetchSettings from './fetchSettings';
 import renderWithTimeout from './renderWithTimeout';
