@@ -40,7 +40,6 @@ export function checksAnotherArrForWatched(
   } else {
     //* delete element
     userElement.lib.queue.results.splice(idx, 1);
-    console.log(userElement.lib.queue.results.length);
   }
 }
 
