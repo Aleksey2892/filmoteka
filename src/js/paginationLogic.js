@@ -147,14 +147,35 @@ export default function paginationLogic(totalPage, currentPage = 1) {
    * Initialization
    * * * * * * * * * * * * * * * * */
 
-  var init = function () {
-    const setting = {
-      size: totalPage, // pages size
-      page: currentPage, // selected page
-      step: 2, // pages before and after current
+  if (window.matchMedia('(max-width: 479px)').matches) {
+    var init = function () {
+      const setting = {
+        size: totalPage, // pages size
+        page: currentPage, // selected page
+        step: 1, // pages before and after current
+      };
+      Pagination.Init(document.getElementById('pagination'), setting);
     };
-    Pagination.Init(document.getElementById('pagination'), setting);
-  };
+  } else if (window.matchMedia('(min-width: 480px)').matches) {
+    var init = function () {
+      const setting = {
+        size: totalPage, // pages size
+        page: currentPage, // selected page
+        step: 2, // pages before and after current
+      };
+      Pagination.Init(document.getElementById('pagination'), setting);
+    };
+  }
 
+  if (window.matchMedia('(min-width: 1024px)').matches) {
+    var init = function () {
+      const setting = {
+        size: totalPage, // pages size
+        page: currentPage, // selected page
+        step: 3, // pages before and after current
+      };
+      Pagination.Init(document.getElementById('pagination'), setting);
+    };
+  }
   document.addEventListener('DOMContentLoaded', init(), false);
 }

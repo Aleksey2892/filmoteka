@@ -15,7 +15,7 @@
 
 .pagination button,
 .pagination i {
-  min-width: 40px;
+  min-width: 30px;
   height: 40px;
   display: flex;
   justify-content: center;
@@ -28,6 +28,10 @@
   background: transparent;
   border: none;
   border-radius: 5px;
+
+  @include phones {
+    width: 40px;
+  }
 
   cursor: pointer;
 
@@ -52,12 +56,16 @@
 
 .pagination .arrow {
   border: none;
+  width: 30px;
   height: 40px;
-  width: 40px;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 5px;
   cursor: pointer;
+
+  @include phones {
+    width: 40px;
+  }
 
   &:disabled {
     opacity: 0.5;
@@ -73,9 +81,3 @@
 .pagination .arrow-right {
   background-image: url('images/icons/arrow-right.svg');
 }
-
-/*это для стрелок, по макету они всегда серые, нужно добавить по классу в разметку*/
-// .arrow-right,
-// .arrow-left {
-//   background-color: $main-grey;
-// }

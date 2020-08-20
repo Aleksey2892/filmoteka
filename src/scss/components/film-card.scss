@@ -34,6 +34,10 @@
     margin-right: 16px;
     width: 207px;
 
+    &:hover .close-btn {
+      opacity: 1;
+    }
+
     &:nth-child(4n) {
       margin-right: 0;
     }
