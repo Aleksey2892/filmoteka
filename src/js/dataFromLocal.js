@@ -5,6 +5,6 @@ export default function dataFromLocal() {
 
     return arr;
   } catch (error) {
-    console.log(error);
+    console.log('Что-то пошло не так', error);
   }
 }

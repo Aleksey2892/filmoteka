@@ -10,7 +10,7 @@ import {
   checksAnotherArrForWatched,
   checksAnotherArrForQueue,
 } from './checksAnotherArr';
-// ==================
+
 // watched
 // ==================
 export function addToWatched(whoOnline, localUsers) {
@@ -35,8 +35,6 @@ export function addToWatched(whoOnline, localUsers) {
     } else {
       const isFilm = userElement.lib.watched.results.find(el => {
         if (el.id === oneCardObj.id) {
-          console.log('есть такой');
-          // notification['info']('This movie is on your list Watched', 'Info');
           return true;
         }
       });
@@ -55,11 +53,6 @@ export function addToWatched(whoOnline, localUsers) {
   }
 }
 
-//!
-
-//!
-
-// ==================
 // queue
 // ==================
 export function addToQueue(whoOnline, localUsers) {
@@ -84,8 +77,6 @@ export function addToQueue(whoOnline, localUsers) {
     } else {
       const isFilm = userElement.lib.queue.results.find(el => {
         if (el.id === oneCardObj.id) {
-          console.log('есть такой');
-          // notification['info']('This movie is on your list Queue', 'Info');
           return true;
         }
       });

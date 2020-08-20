@@ -1,12 +1,9 @@
 import refsButtons from './refs-buttons.js';
 import clearPage from './clearPage';
 import startFetch from './startFetch';
-import { renderWithTimeout } from './gallery';
+import renderWithTimeout from './renderWithTimeout';
 import { getLocal } from './renderSingleCard';
 import refs from './refs.js';
-// import refs from './refs';
-// import renderCard from './renderManyCards';
-// import tempCard from '../templates/tempCard.hbs';
 
 const openMyLibrary = () => {
   refsButtons.searchBox.classList.add('visually-hidden');

@@ -13,13 +13,6 @@ export let users = [
   },
 ];
 
-// export let lib = [
-//   {
-//     watched: [],
-//     queue: [],
-//   },
-// ];
-
 try {
   localStorage.setItem('isOnline', 'no one is online');
 

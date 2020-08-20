@@ -5,8 +5,6 @@ import refs from './refs';
 const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
 
 export default function startFetch(pageNumber = 1) {
-  // pageNumber.counter += 1;
-
   refs.spinnerLoader.classList.remove('not-visible');
 
   return axios(
@@ -14,7 +12,7 @@ export default function startFetch(pageNumber = 1) {
   )
     .then(data => {
       refs.spinnerLoader.classList.add('not-visible');
-      
+
       return data.data;
     })
     .catch(error => {
