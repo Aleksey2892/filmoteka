@@ -1,5 +1,6 @@
 import refs from './refs';
 import tempCard from '../templates/tempCard.hbs';
+import whatsOnPage from './whatsOnPage';
 import getGenreNames from './getGenres';
 
 // get custom array films after fetch
@@ -23,7 +24,13 @@ export default function renderCard(filmsList) {
     } else {
       // new rules for single card render
       if (elem.genre_ids) {
-        elem.genre_ids = getGenreNames(elem.genre_ids).join(' ');
+        if (Array.isArray(elem.genre_ids)) {
+          console.log(elem.genre_ids);
+          console.log('массив');
+          elem.genre_ids = getGenreNames(elem.genre_ids).join(' ');
+        } else {
+          console.log('не массив');
+        }
       } else if (elem.genres) {
         // const genresArr =
         elem.genre_ids = elem.genres.map(el => el.name).join(' ');

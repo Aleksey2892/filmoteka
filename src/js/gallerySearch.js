@@ -4,6 +4,7 @@ import { doNotVisible, doVisible } from './visibleFunc';
 import { searchFetch } from './searchFetch';
 import renderWithTimeout from './renderWithTimeout';
 import fetchSettings from './fetchSettings';
+import whatsOnPage from './whatsOnPage';
 
 export default function gallerySearch(event) {
   event.preventDefault();

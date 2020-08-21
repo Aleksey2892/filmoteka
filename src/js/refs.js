@@ -8,6 +8,7 @@ const refs = {
   errorNull: document.querySelector('.search-null'),
   spinnerLoader: document.querySelector('.cssload-dots'),
   pagination: document.querySelector('#pagination'),
+  backBtn: document.querySelector('.back-btn'),
 
   //for library
   libraryBtn: document.querySelector('.library-button'),

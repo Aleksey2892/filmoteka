@@ -34,6 +34,9 @@ function openOneFilm(event) {
         // get object
         oneCardObj = obj;
 
+        //!
+        refs.backBtn.classList.remove('not-visible');
+        //!
         refsButtons.linkHome.classList.remove('active-menu');
 
         if (obj.poster_path === null) {

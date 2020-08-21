@@ -1,4 +1,5 @@
-import refsButtons from './refs-buttons.js';
+import refsButtons from './refs-buttons';
+import refs from './refs';
 import clearPage from './clearPage';
 import { startFetch } from './startFetch';
 import renderWithTimeout from './renderWithTimeout';
@@ -14,6 +15,7 @@ function openMyLibrary() {
   refsButtons.homeBg.classList.add('section-top-lib');
   refsButtons.linkHome.classList.remove('active-menu');
   refsButtons.linkLib.classList.add('active-menu');
+  refs.backBtn.classList.add('not-visible');
 
   // clear for UL and hidden pagination on click on my library
   document.querySelector('#pagination').classList.add('not-visible');
@@ -59,6 +61,7 @@ function ClickW() {
   refsButtons.homeBg.classList.add('section-top-lib');
   refsButtons.homeBg.classList.add('section-top');
   refsButtons.homeBg.classList.remove('section-top-details');
+  refs.backBtn.classList.add('not-visible');
 
   const dataUser = getObjOnlineUser();
   renderWithTimeout(dataUser.lib.watched);
@@ -71,6 +74,7 @@ function ClickQ() {
   refsButtons.homeBg.classList.add('section-top-lib');
   refsButtons.homeBg.classList.add('section-top');
   refsButtons.homeBg.classList.remove('section-top-details');
+  refs.backBtn.classList.add('not-visible');
 
   const dataUser = getObjOnlineUser();
   renderWithTimeout(dataUser.lib.queue);
@@ -88,6 +92,7 @@ function closeMyLibrary(e) {
   refsButtons.myQueue.classList.remove('active');
   refsButtons.linkLib.classList.remove('active-menu');
   refsButtons.linkHome.classList.add('active-menu');
+  refs.backBtn.classList.add('not-visible');
 
   //! render on click btn HOME
   startFetch().then(data => {

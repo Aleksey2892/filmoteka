@@ -4,10 +4,13 @@ import paginationLogic from './paginationLogic';
 import fetchSettings from './fetchSettings';
 import { handlePagination, handleSearchPagination } from './handlePagination';
 import makeDisabled from './makeDisabled';
+import whatsOnPage from './whatsOnPage';
 
 export default function renderWithTimeout(data, currentPage) {
   // timeout for spinner animation
   refs.spinnerLoader.classList.remove('not-visible');
+
+  currentPage = whatsOnPage.data.page;
 
   setTimeout(() => {
     renderCard(data.results);
