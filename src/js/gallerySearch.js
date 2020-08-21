@@ -24,6 +24,9 @@ export default function gallerySearch(event) {
     fetchSettings.inputValue = event.currentTarget.elements.search.value;
 
     searchFetch(fetchSettings.inputValue).then(data => {
+      // not visible for back btn
+      refs.backBtn.classList.add('not-visible');
+
       fetchSettings.totalPages = data.total_pages;
       fetchSettings.fetchType = 'search';
 
