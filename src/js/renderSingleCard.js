@@ -46,6 +46,14 @@ function openOneFilm(event) {
           obj.poster_path = `https://image.tmdb.org/t/p/w500${obj.poster_path}`;
         }
 
+        console.log(obj.genres);
+
+        if (obj.genres.length === 0) {
+          console.log('render genres пусто', obj.genres);
+          obj.genres = [{ name: 'no genres' }];
+          // {id: 28, name: "Action"}
+          console.log('render genres пусто', obj.genres);
+        }
         clearPage();
 
         refsButton.homeBg.classList.remove('section-top-lib');

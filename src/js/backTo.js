@@ -35,13 +35,26 @@ export default function backTo() {
   //? if it is not selected then simple render
   if (!refsButtons.myWatched.classList.contains('visually-hidden')) {
     if (whichLib) {
+      loadBgLib();
       renderWithTimeout(userData.lib.watched);
       visibilityCloseBtnAndPag();
     } else if (!whichLib) {
+      loadBgLib();
       renderWithTimeout(userData.lib.queue);
       visibilityCloseBtnAndPag();
     }
   } else {
+    loadBgHome();
     renderWithTimeout(whatsOnPage.data);
   }
+}
+
+function loadBgLib() {
+  refsButtons.homeBg.classList.remove('section-top-details');
+  refsButtons.homeBg.classList.add('section-top-lib');
+}
+
+function loadBgHome() {
+  refsButtons.homeBg.classList.remove('section-top-details');
+  refsButtons.homeBg.classList.add('section-top');
 }
