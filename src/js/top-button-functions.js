@@ -4,6 +4,7 @@ import clearPage from './clearPage';
 import { startFetch } from './startFetch';
 import renderWithTimeout from './renderWithTimeout';
 import getLocal from './getLocal';
+import visibilityCloseBtnAndPag from './visibilityCloseBtnAndPag';
 
 function openMyLibrary() {
   refsButtons.searchBox.classList.add('visually-hidden');
@@ -23,22 +24,6 @@ function openMyLibrary() {
 
   //! loading Watched default on click My-Library
   ClickW();
-}
-
-//! added visible close btn ( for film-card)
-//! added not-visible pagination in My-Library
-function classAddRemove() {
-  setTimeout(() => {
-    if (document.querySelector('.close-btn')) {
-      const allCloseBtnArr = document.querySelectorAll('.close-btn');
-
-      allCloseBtnArr.forEach(el => {
-        el.classList.remove('not-visible');
-      });
-    }
-
-    document.querySelector('#pagination').classList.add('not-visible');
-  }, 1005);
 }
 
 //! get User element
@@ -65,7 +50,7 @@ function ClickW() {
 
   const dataUser = getObjOnlineUser();
   renderWithTimeout(dataUser.lib.watched);
-  classAddRemove();
+  visibilityCloseBtnAndPag();
 }
 
 //! render Queue
@@ -78,7 +63,7 @@ function ClickQ() {
 
   const dataUser = getObjOnlineUser();
   renderWithTimeout(dataUser.lib.queue);
-  classAddRemove();
+  visibilityCloseBtnAndPag();
 }
 
 function closeMyLibrary(e) {
