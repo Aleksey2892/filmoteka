@@ -15,7 +15,6 @@ export function startFetch(pageNumber = 1) {
       refs.spinnerLoader.classList.add('not-visible');
 
       whatsOnPage.data = data.data;
-      console.log('data startFetch: ', whatsOnPage.data);
 
       return data.data;
     })
