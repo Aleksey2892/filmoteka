@@ -30,5 +30,5 @@ try {
     });
   }
 } catch (error) {
-  console.log(error);
+  console.log('Что-то пошло не так', error);
 }

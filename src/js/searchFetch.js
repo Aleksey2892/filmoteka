@@ -8,7 +8,6 @@ export function searchFetch(inputValue, pageNumber = 1) {
   )
     .then(data => {
       whatsOnPage.data = data.data;
-      console.log('data serchFetch: ', whatsOnPage.data);
 
       return data.data;
     })
