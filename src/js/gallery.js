@@ -1,6 +1,6 @@
 import refs from './refs';
 import { searchFetch } from './searchFetch';
-import startFetch from './startFetch';
+import { startFetch } from './startFetch';
 import clearPage from './clearPage';
 import renderCard from './renderManyCards';
 import paginationLogic from './paginationLogic';
@@ -9,15 +9,19 @@ import { doNotVisible, doVisible } from './visibleFunc';
 let inputValue;
 let fetchType = 'start';
 let totalPages = 0;
-const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
+// const api_key = 'cc24e28d216ef164940b9fd9893ff62a';
 
 //  loading first page - popular films
-startFetch().then(data => {
-  totalPages = data.total_pages;
-  fetchType = 'start';
-  // timeout for spinner animation
-  renderWithTimeout(data);
-});
+startFetch()
+  .then(data => {
+    totalPages = data.total_pages;
+    fetchType = 'start';
+    // timeout for spinner animation
+    renderWithTimeout(data);
+  })
+  .catch(error => {
+    console.log(error);
+  });
 
 // on submit
 refs.form.addEventListener('submit', event => {
@@ -40,7 +44,7 @@ refs.form.addEventListener('submit', event => {
       totalPages = data.total_pages;
       fetchType = 'search';
 
-      if (data.results.length === 0) {
+      if (data.length === 0) {
         document.querySelector('#pagination').classList.add('not-visible');
 
         doVisible(refs.errorWrong);
@@ -57,10 +61,11 @@ refs.form.addEventListener('submit', event => {
 
 export function renderWithTimeout(data, currentPage) {
   // timeout for spinner animation
+
   refs.spinnerLoader.classList.remove('not-visible');
 
   setTimeout(() => {
-    renderCard(data.results);
+    renderCard(data);
     paginationLogic(data.total_pages, currentPage);
 
     const paginatRef = document.querySelector('#pagination');

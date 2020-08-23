@@ -1,6 +1,6 @@
 import refsButtons from './refs-buttons.js';
 import clearPage from './clearPage';
-import startFetch from './startFetch';
+import { startFetch } from './startFetch';
 import { renderWithTimeout } from './gallery';
 import refs from './refs';
 import { getLocal } from './renderSingleCard';

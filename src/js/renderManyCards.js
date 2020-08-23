@@ -1,10 +1,12 @@
 import refs from './refs';
 import tempCard from '../templates/tempCard.hbs';
-import getGenreNames from './getGenres';
+import { getGenreNames } from './getGenres';
 
 // get custom array films after fetch
-export default function renderCard(filmsList) {
-  console.log(filmsList);
+export default function renderCard(data) {
+  const filmsList = data[0];
+  const genre_names = data[1];
+
   const customList = filmsList.map(elem => {
     //for no img
     if (elem.poster_path === null) {
@@ -24,13 +26,9 @@ export default function renderCard(filmsList) {
     } else {
       // new rules for single card render
       if (elem.genre_ids) {
-        elem.genre_ids = getGenreNames(elem.genre_ids).join(' ');
+        elem.genre_ids = getGenreNames(elem.genre_ids, genre_names).join(' ');
       } else if (elem.genres) {
-        // const genresArr =
         elem.genre_ids = elem.genres.map(el => el.name).join(' ');
-        console.log(elem.genres.map(el => el.name));
-        // console.log(genresArr);
-        // return genresArr;
       }
     }
 
@@ -43,6 +41,6 @@ export default function renderCard(filmsList) {
 
     return elem;
   });
-  // console.log(customList);
+
   refs.listFilms.insertAdjacentHTML('beforeend', tempCard(customList));
 }
